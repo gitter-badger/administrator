@@ -41,6 +41,7 @@
             this.organizationListControl.Size = new System.Drawing.Size(683, 415);
             this.organizationListControl.TabIndex = 0;
             this.organizationListControl.OrganizationUpdated += new Administrator.Controls.OrganizationUpdatedDelegete(this.organizationListControl_OrganizationAdded);
+            this.organizationListControl.MovedFromBlackList += new Administrator.EventArgsReferences.MovedFromBlackListEventHandler(this.organizationListControl_MovedFromBlackList);
             this.organizationListControl.MovedToBlackList += new Administrator.EventArgsReferences.MovedToBlackListEventHandler(this.organizationListControl_MovedToBlackList);
             // 
             // OrganizationPanel

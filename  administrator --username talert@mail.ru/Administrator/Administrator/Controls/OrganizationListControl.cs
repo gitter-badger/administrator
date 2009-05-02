@@ -10,6 +10,7 @@ using DevExpress.Data.Linq.Helpers;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
+using DevExpress.XtraScheduler;
 using log4net;
 
 namespace Administrator.Controls
@@ -20,6 +21,8 @@ namespace Administrator.Controls
 
         public event OrganizationUpdatedDelegete OrganizationUpdated;
         public event MovedToBlackListEventHandler MovedToBlackList;
+        public event MovedFromBlackListEventHandler MovedFromBlackList;
+
 
         public OrganizationListControl()
         {
@@ -72,6 +75,11 @@ namespace Administrator.Controls
             if (list != null) list(this, e);
         }
 
+        private void OnMovedFromBlackList(MovedFromBlackListEventArgs e)
+        {
+            if (MovedFromBlackList != null) MovedFromBlackList(this, e);
+        }
+
         private void EditOrganizationDetails(bool isNewOrganization)
         {
             using (var form = new OrganizationDetailsFrame())
@@ -105,7 +113,19 @@ namespace Administrator.Controls
         private void UpdateMenuState()
         {
             MenuEdit.Enabled = CurrentOrganization != null;
-            menuBlackList.Enabled = CurrentOrganization != null && !CurrentOrganization.IsInBlackList;
+            menuBlackList.Enabled = CurrentOrganization != null;
+            if(CurrentOrganization != null)
+            {
+                menuBlackList.Glyph = CurrentOrganization.IsInBlackList
+                                          ? Properties.Resources.funny_face_24
+                                          : Properties.Resources.sad_face_24;
+
+                menuBlackList.Caption = CurrentOrganization.IsInBlackList
+                                            ?
+                                                "Из чёрного списка"
+                                            :
+                                                "В чёрный список";
+            }
         }
 
         private void MenuNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -132,13 +152,25 @@ namespace Administrator.Controls
         {
             if(CurrentOrganization == null) return;
 
-            using (var form = new MoveToTheBlackListForm())
+            if (!CurrentOrganization.IsInBlackList)
             {
-                if(form.ShowDialog() ==DialogResult.OK)
+                using (var form = new MoveToTheBlackListForm())
                 {
-                    OnMovedToBlackList(new MovedToBlackListEventArgs(CurrentOrganization.OrganizationID,form.Reason));
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        OnMovedToBlackList(new MovedToBlackListEventArgs(CurrentOrganization.OrganizationID, form.Reason));
+                        ReloadData();
+                    }
+                    
                 }
-                ReloadData();
+            }
+            else
+            {
+                if(Conformation.RestoreFromBlackList)
+                {
+                    OnMovedFromBlackList(new MovedFromBlackListEventArgs(CurrentOrganization.OrganizationID));
+                    ReloadData();
+                }
             }
         }
     }

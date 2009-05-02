@@ -7,7 +7,7 @@ namespace Administrator
     {
         public static bool PersonDelation   
         {
-            get { return ShowConformationFrame("Подтверждение", "Вы уверены, что хотите удалить этого сотрудника?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.OK; }
+            get { return ShowConformationFrame("Подтверждение", "Вы уверены, что хотите удалить этого сотрудника?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes; }
         }
 
         public static bool ResetConnection
@@ -17,6 +17,16 @@ namespace Administrator
                     ShowConformationFrame("Ошибка",
                                           "Не удалось насторить подключение к базе данных. Хотите попробовать ещё раз?",
                                           MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.OK; }
+        }
+
+        public static bool RestoreFromBlackList
+        {
+            get
+            {
+                return ShowConformationFrame("Подтверждение",
+                                             "Вы уверены что хотите восстановить мз \"чёрного\" списка?",
+                                             MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+            }
         }
 
         private static DialogResult ShowConformationFrame(string caption, string text, MessageBoxButtons buttons, MessageBoxIcon icon)

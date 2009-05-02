@@ -144,6 +144,13 @@ namespace Administrator.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap funny_face_24 {
+            get {
+                object obj = ResourceManager.GetObject("funny_face_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap group {
             get {
                 object obj = ResourceManager.GetObject("group", resourceCulture);

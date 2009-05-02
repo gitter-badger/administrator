@@ -3,6 +3,7 @@
 namespace Administrator.EventArgsReferences
 {
     public delegate void MovedToBlackListEventHandler(object sender, MovedToBlackListEventArgs e);
+    public delegate void MovedFromBlackListEventHandler(object sender, MovedFromBlackListEventArgs e);
 
     public class MovedToBlackListEventArgs : EventArgs
     {
@@ -13,6 +14,16 @@ namespace Administrator.EventArgsReferences
         {
             BadEntityId = badEntityID;
             Reason = reason;
+        }
+    }
+
+    public class MovedFromBlackListEventArgs : EventArgs
+    {
+        public Guid BadEntityId { get; private set; }
+
+        public MovedFromBlackListEventArgs(Guid badEntityID)
+        {
+            BadEntityId = badEntityID;
         }
     }
 }

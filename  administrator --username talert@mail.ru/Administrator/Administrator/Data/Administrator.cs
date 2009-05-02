@@ -58,6 +58,15 @@ namespace Administrator.Data
             SubmitChanges();
         }
 
+        public void MoveFromBlackList(Guid badEntityID)
+        {
+            if (BlackLists.Where(bl => bl.BlackListID == badEntityID).SingleOrDefault() == null) return;
+
+            BlackLists.DeleteOnSubmit(BlackLists.Where(bl=>bl.BlackListID == badEntityID).SingleOrDefault());
+
+            SubmitChanges();
+        }
+
         public object[] ScopesOfActivity()
         {
             return Organizations

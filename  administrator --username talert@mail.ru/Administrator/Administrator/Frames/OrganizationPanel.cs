@@ -17,7 +17,7 @@ namespace Administrator.Frames
 
         private new void Refresh()
         {
-            Document.UpdateDocument();
+            organizationListControl.ReloadData();
         }
 
         private void OrganizationPanel_Shown(object sender, EventArgs e)
@@ -28,6 +28,11 @@ namespace Administrator.Frames
         private void organizationListControl_MovedToBlackList(object sender, EventArgsReferences.MovedToBlackListEventArgs e)
         {
             Program.CurrentDataContext.MoveToBlackList(e.BadEntityId,e.Reason);
+        }
+
+        private void organizationListControl_MovedFromBlackList(object sender, EventArgsReferences.MovedFromBlackListEventArgs e)
+        {
+            Program.CurrentDataContext.MoveFromBlackList(e.BadEntityId);
         }
     }
 }

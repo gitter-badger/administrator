@@ -503,6 +503,7 @@
     <Content Include="Resources\exit.png" />
     <None Include="Resources\folder-blue_64_64.png" />
     <None Include="Resources\funnel.png" />
+    <Content Include="Resources\funny_face_24.png" />
     <Content Include="Resources\group.ico" />
     <Content Include="Resources\group.png" />
     <None Include="Resources\index.png" />
