@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Runtime.Remoting.Messaging;
-using System.Security.Cryptography;
-using System.Text;
 using ALProjects.Common.AppState;
 using ALProjects.Core;
 using ALProjects.Core.Lookups;
