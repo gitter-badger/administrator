@@ -50,20 +50,12 @@
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.ErrorProvider = new Administrator.Controls.CustomErrorProvider(this.components);
-            this.EventNonCashPrice = new DevExpress.XtraEditors.SpinEdit();
-            this.EventLoss = new DevExpress.XtraEditors.SpinEdit();
-            this.EventCashPrice = new DevExpress.XtraEditors.SpinEdit();
             this.ReviewEdit = new DevExpress.XtraEditors.MemoEdit();
             this.EventDescription = new DevExpress.XtraEditors.MemoEdit();
-            this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
-            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
-            this.balanceLabel = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.BalanceControl = new Administrator.Controls.BalanceControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ExitDateEdit.Properties.VistaTimeProperties)).BeginInit();
@@ -79,13 +71,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.EventManager.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventContactPerson.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EventNonCashPrice.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EventLoss.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EventCashPrice.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReviewEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventDescription.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
-            this.groupControl5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
@@ -355,63 +342,6 @@
             this.ErrorProvider.ContainerControl = this;
             this.ErrorProvider.IgnoreOnCancel = true;
             // 
-            // EventNonCashPrice
-            // 
-            this.EventNonCashPrice.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.EventNonCashPrice.Location = new System.Drawing.Point(120, 49);
-            this.EventNonCashPrice.Name = "EventNonCashPrice";
-            this.EventNonCashPrice.Properties.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.EventNonCashPrice.Properties.Appearance.Options.UseForeColor = true;
-            this.EventNonCashPrice.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.EventNonCashPrice.Properties.Mask.EditMask = "c0";
-            this.ErrorProvider.SetRequired(this.EventNonCashPrice, false);
-            this.EventNonCashPrice.Size = new System.Drawing.Size(113, 20);
-            this.EventNonCashPrice.TabIndex = 14;
-            this.EventNonCashPrice.EditValueChanged += new System.EventHandler(this.EventNonCashPrice_EditValueChanged);
-            // 
-            // EventLoss
-            // 
-            this.EventLoss.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.EventLoss.Location = new System.Drawing.Point(344, 23);
-            this.EventLoss.Name = "EventLoss";
-            this.EventLoss.Properties.Appearance.ForeColor = System.Drawing.Color.DarkRed;
-            this.EventLoss.Properties.Appearance.Options.UseForeColor = true;
-            this.EventLoss.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.EventLoss.Properties.Mask.EditMask = "c0";
-            this.ErrorProvider.SetRequired(this.EventLoss, false);
-            this.EventLoss.Size = new System.Drawing.Size(103, 20);
-            this.EventLoss.TabIndex = 1;
-            this.EventLoss.EditValueChanged += new System.EventHandler(this.EventLoss_EditValueChanged);
-            // 
-            // EventCashPrice
-            // 
-            this.EventCashPrice.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.EventCashPrice.Location = new System.Drawing.Point(120, 23);
-            this.EventCashPrice.Name = "EventCashPrice";
-            this.EventCashPrice.Properties.Appearance.ForeColor = System.Drawing.Color.DarkGreen;
-            this.EventCashPrice.Properties.Appearance.Options.UseForeColor = true;
-            this.EventCashPrice.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.EventCashPrice.Properties.Mask.EditMask = "c0";
-            this.ErrorProvider.SetRequired(this.EventCashPrice, false);
-            this.EventCashPrice.Size = new System.Drawing.Size(113, 20);
-            this.EventCashPrice.TabIndex = 0;
-            this.EventCashPrice.EditValueChanged += new System.EventHandler(this.EventPrice_EditValueChanged);
-            // 
             // ReviewEdit
             // 
             this.ReviewEdit.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -429,72 +359,6 @@
             this.ErrorProvider.SetRequired(this.EventDescription, false);
             this.EventDescription.Size = new System.Drawing.Size(443, 192);
             this.EventDescription.TabIndex = 1;
-            // 
-            // groupControl5
-            // 
-            this.groupControl5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupControl5.Controls.Add(this.EventNonCashPrice);
-            this.groupControl5.Controls.Add(this.labelControl9);
-            this.groupControl5.Controls.Add(this.balanceLabel);
-            this.groupControl5.Controls.Add(this.labelControl10);
-            this.groupControl5.Controls.Add(this.EventLoss);
-            this.groupControl5.Controls.Add(this.labelControl11);
-            this.groupControl5.Controls.Add(this.EventCashPrice);
-            this.groupControl5.Controls.Add(this.labelControl12);
-            this.groupControl5.Location = new System.Drawing.Point(13, 259);
-            this.groupControl5.Name = "groupControl5";
-            this.groupControl5.Size = new System.Drawing.Size(452, 102);
-            this.groupControl5.TabIndex = 5;
-            this.groupControl5.Text = "Баланс";
-            // 
-            // labelControl9
-            // 
-            this.labelControl9.Appearance.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.labelControl9.Appearance.Options.UseForeColor = true;
-            this.labelControl9.Location = new System.Drawing.Point(5, 52);
-            this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(88, 13);
-            this.labelControl9.TabIndex = 15;
-            this.labelControl9.Text = "Прибыль (б/нал):";
-            // 
-            // balanceLabel
-            // 
-            this.balanceLabel.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.balanceLabel.Appearance.Options.UseFont = true;
-            this.balanceLabel.Location = new System.Drawing.Point(120, 75);
-            this.balanceLabel.Name = "balanceLabel";
-            this.balanceLabel.Size = new System.Drawing.Size(9, 19);
-            this.balanceLabel.TabIndex = 13;
-            this.balanceLabel.Text = "0";
-            // 
-            // labelControl10
-            // 
-            this.labelControl10.Location = new System.Drawing.Point(5, 80);
-            this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(42, 13);
-            this.labelControl10.TabIndex = 12;
-            this.labelControl10.Text = "Баланс: ";
-            // 
-            // labelControl11
-            // 
-            this.labelControl11.Appearance.ForeColor = System.Drawing.Color.DarkRed;
-            this.labelControl11.Appearance.Options.UseForeColor = true;
-            this.labelControl11.Location = new System.Drawing.Point(281, 26);
-            this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(38, 13);
-            this.labelControl11.TabIndex = 10;
-            this.labelControl11.Text = "Ущерб:";
-            // 
-            // labelControl12
-            // 
-            this.labelControl12.Appearance.ForeColor = System.Drawing.Color.DarkGreen;
-            this.labelControl12.Appearance.Options.UseForeColor = true;
-            this.labelControl12.Location = new System.Drawing.Point(5, 26);
-            this.labelControl12.Name = "labelControl12";
-            this.labelControl12.Size = new System.Drawing.Size(78, 13);
-            this.labelControl12.TabIndex = 8;
-            this.labelControl12.Text = "Прибыль (нал):";
             // 
             // xtraTabControl1
             // 
@@ -524,13 +388,39 @@
             this.xtraTabPage1.Size = new System.Drawing.Size(443, 192);
             this.xtraTabPage1.Text = "Заметки";
             // 
+            // BalanceControl
+            // 
+            this.BalanceControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.BalanceControl.CashPrice = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.BalanceControl.Location = new System.Drawing.Point(13, 260);
+            this.BalanceControl.Loss = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.BalanceControl.MinimumSize = new System.Drawing.Size(357, 105);
+            this.BalanceControl.Name = "BalanceControl";
+            this.BalanceControl.NonCashPrice = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.BalanceControl.Size = new System.Drawing.Size(452, 105);
+            this.BalanceControl.TabIndex = 7;
+            // 
             // EventClosedDetailsFrame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(477, 632);
+            this.Controls.Add(this.BalanceControl);
             this.Controls.Add(this.xtraTabControl1);
-            this.Controls.Add(this.groupControl5);
             this.Controls.Add(this.groupControl3);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.CancelButton);
@@ -561,14 +451,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.EventManager.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventContactPerson.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EventNonCashPrice.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EventLoss.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EventCashPrice.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReviewEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventDescription.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
-            this.groupControl5.ResumeLayout(false);
-            this.groupControl5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage2.ResumeLayout(false);
@@ -599,20 +483,12 @@
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.DateEdit RegistrationDateEdit;
         private DevExpress.XtraEditors.DateEdit ExitDateEdit;
-        private DevExpress.XtraEditors.GroupControl groupControl5;
-        private DevExpress.XtraEditors.SpinEdit EventNonCashPrice;
-        private DevExpress.XtraEditors.LabelControl labelControl9;
-        private DevExpress.XtraEditors.LabelControl balanceLabel;
-        private DevExpress.XtraEditors.LabelControl labelControl10;
-        private DevExpress.XtraEditors.SpinEdit EventLoss;
-        private DevExpress.XtraEditors.LabelControl labelControl11;
-        private DevExpress.XtraEditors.SpinEdit EventCashPrice;
-        private DevExpress.XtraEditors.LabelControl labelControl12;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraEditors.MemoEdit ReviewEdit;
         private DevExpress.XtraEditors.MemoEdit EventDescription;
         private DevExpress.XtraEditors.LookUpEdit EventOrganization;
+        private Administrator.Controls.BalanceControl BalanceControl;
     }
 }

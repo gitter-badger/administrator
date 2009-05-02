@@ -21,20 +21,20 @@ namespace Administrator.Frames
 
         public Decimal CashPrice
         {
-            get { return (Decimal)EventCashPrice.EditValue; }
-            set { EventCashPrice.EditValue = value; }
+            get { return BalanceControl.CashPrice; }
+            set { BalanceControl.CashPrice = value; }
         }
 
         public Decimal NonCashPrice
         {
-            get { return (Decimal)EventNonCashPrice.EditValue; }
-            set { EventNonCashPrice.EditValue = value; }
+            get { return BalanceControl.NonCashPrice; }
+            set { BalanceControl.NonCashPrice = value; }
         }
 
         public Decimal Loss
         {
-            get { return (Decimal)EventLoss.EditValue; }
-            set { EventLoss.EditValue = value; }
+            get { return BalanceControl.Loss; }
+            set { BalanceControl.Loss = value; }
         }
 
         public String Review
@@ -58,7 +58,7 @@ namespace Administrator.Frames
             Event.OrganizationId = EventOrganization.EditValue == null ? Guid.Empty : (Guid)EventOrganization.EditValue;
             Event.RegistrationDate = RegistrationDateEdit.EditValue == null
                                          ? DateTime.Now
-                                         : (DateTime) RegistrationDateEdit.EditValue;
+                                         : (DateTime)RegistrationDateEdit.EditValue;
             Event.ExitDate = ExitDateEdit.EditValue == null
                                          ? DateTime.Now
                                          : (DateTime)ExitDateEdit.EditValue;
@@ -67,7 +67,7 @@ namespace Administrator.Frames
             Event.Loss = Loss;
             Event.Review = Review;
         }
-        
+
         private void SetFormData()
         {
             if (Event == null)
@@ -93,15 +93,6 @@ namespace Administrator.Frames
             }
         }
 
-        private void CalcBalance()
-        {
-            decimal balance = CashPrice + NonCashPrice + Loss;
-
-            balanceLabel.Text = balance.ToString("C");
-
-            balanceLabel.ForeColor = balance <= 0 ? Color.Red : Color.Green;
-        }
-
         private void EventDetailsForm_Shown(object sender, EventArgs e)
         {
             EventType.Properties.Items.AddRange(EventTypeReference.GetEventReferences());
@@ -109,9 +100,9 @@ namespace Administrator.Frames
             EventContactPerson.Properties.DataSource = PersonsDataSource;
             EventManager.Properties.DataSource = PersonsDataSource;
             EventOrganization.Properties.DataSource = OrganizationsDataSource;
-            
+
             SetFormData();
-       }
+        }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
@@ -130,7 +121,7 @@ namespace Administrator.Frames
         {
             bool error = string.IsNullOrEmpty(EventName.EditValue as string);
 
-            ErrorProvider.SetError(EventName,error?"РњРµСЂРѕРїСЂРёСЏС‚РёРµ РґРѕР»Р¶РЅРѕ РёРјРµС‚СЊ РЅР°Р·РІР°РЅРёРµ":null,true);
+            ErrorProvider.SetError(EventName, error ? "РњРµСЂРѕРїСЂРёСЏС‚РёРµ РґРѕР»Р¶РЅРѕ РёРјРµС‚СЊ РЅР°Р·РІР°РЅРёРµ" : null, true);
 
             e.Cancel = error;
         }
@@ -151,21 +142,6 @@ namespace Administrator.Frames
             ErrorProvider.SetError(RegistrationDateEdit, error ? "РќРµРѕР±С…РѕРґРёРјРѕ РІРІРµСЃС‚Рё РґР°С‚Сѓ Р·Р°РµР·РґР°" : null, true);
 
             e.Cancel = error;
-        }
-
-        private void EventPrice_EditValueChanged(object sender, EventArgs e)
-        {
-            CalcBalance();
-        }
-
-        private void EventLoss_EditValueChanged(object sender, EventArgs e)
-        {
-            CalcBalance();
-        }
-
-        private void EventNonCashPrice_EditValueChanged(object sender, EventArgs e)
-        {
-            CalcBalance();
         }
     }
 }

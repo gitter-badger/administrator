@@ -161,6 +161,12 @@
     <Compile Include="Controls\PersonSelectorControl.Designer.cs">
       <DependentUpon>PersonSelectorControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\BalanceControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\BalanceControl.Designer.cs">
+      <DependentUpon>BalanceControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ServiceControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -325,6 +331,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\PersonSelectorControl.resx">
       <DependentUpon>PersonSelectorControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\BalanceControl.resx">
+      <DependentUpon>BalanceControl.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ServiceControl.resx">
