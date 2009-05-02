@@ -1,5 +1,0 @@
-C:\Работа\SDSolution\SDProjects\Logger\bin\Debug\Logger.dll
-C:\Работа\SDSolution\SDProjects\Logger\bin\Debug\Logger.pdb
-C:\Работа\SDSolution\SDProjects\Logger\obj\Debug\ResolveAssemblyReference.cache
-C:\Работа\SDSolution\SDProjects\Logger\obj\Debug\Logger.dll
-C:\Работа\SDSolution\SDProjects\Logger\obj\Debug\Logger.pdb

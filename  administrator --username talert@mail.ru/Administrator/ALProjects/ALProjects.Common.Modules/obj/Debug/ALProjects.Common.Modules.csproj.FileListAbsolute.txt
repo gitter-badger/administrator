@@ -1,5 +1,0 @@
-C:\Работа\SDSolution\SDProjects\ALProjects.Common.Modules\bin\Debug\ALProjects.Common.Modules.dll
-C:\Работа\SDSolution\SDProjects\ALProjects.Common.Modules\bin\Debug\ALProjects.Common.Modules.pdb
-C:\Работа\SDSolution\SDProjects\ALProjects.Common.Modules\obj\Debug\ResolveAssemblyReference.cache
-C:\Работа\SDSolution\SDProjects\ALProjects.Common.Modules\obj\Debug\ALProjects.Common.Modules.dll
-C:\Работа\SDSolution\SDProjects\ALProjects.Common.Modules\obj\Debug\ALProjects.Common.Modules.pdb
