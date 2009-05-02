@@ -1,0 +1,15 @@
+C:\Работа\SDSolution\SDProjects\ALProjects.Core.Config\bin\Debug\ALProjects.Core.Config.dll
+C:\Работа\SDSolution\SDProjects\ALProjects.Core.Config\bin\Debug\ALProjects.Core.Config.pdb
+C:\Работа\SDSolution\SDProjects\ALProjects.Core.Config\obj\Debug\ResolveAssemblyReference.cache
+C:\Работа\SDSolution\SDProjects\ALProjects.Core.Config\obj\Debug\ALProjects.Core.Config.dll
+C:\Работа\SDSolution\SDProjects\ALProjects.Core.Config\obj\Debug\ALProjects.Core.Config.pdb
+c:\Работа\SDSolution\SDProjects\ALProjects.Core.Config\bin\Debug\ALProjects.Core.dll
+c:\Работа\SDSolution\SDProjects\ALProjects.Core.Config\bin\Debug\ALProjects.Core.pdb
+C:\Работа\SDSolution\SDProjects\ALProjects.Core.Config\bin\Debug\ALProjects.Core.Config.dll.config
+C:\Работа\Pine\PAB\Administrator\ALProjects\ALProjects.Core.Config\bin\Debug\ALProjects.Core.Config.dll
+C:\Работа\Pine\PAB\Administrator\ALProjects\ALProjects.Core.Config\bin\Debug\ALProjects.Core.Config.pdb
+C:\Работа\Pine\PAB\Administrator\ALProjects\ALProjects.Core.Config\bin\Debug\ALProjects.Core.dll
+C:\Работа\Pine\PAB\Administrator\ALProjects\ALProjects.Core.Config\bin\Debug\ALProjects.Core.pdb
+C:\Работа\Pine\PAB\Administrator\ALProjects\ALProjects.Core.Config\obj\Debug\ResolveAssemblyReference.cache
+C:\Работа\Pine\PAB\Administrator\ALProjects\ALProjects.Core.Config\obj\Debug\ALProjects.Core.Config.dll
+C:\Работа\Pine\PAB\Administrator\ALProjects\ALProjects.Core.Config\obj\Debug\ALProjects.Core.Config.pdb

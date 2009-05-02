@@ -1,0 +1,13 @@
+C:\Работа\SDSolution\SDProjects\ALProjects.Security\bin\Debug\ALProjects.NetSecurity.dll
+C:\Работа\SDSolution\SDProjects\ALProjects.Security\bin\Debug\ALProjects.NetSecurity.pdb
+C:\Работа\SDSolution\SDProjects\ALProjects.Security\bin\Debug\ALProjects.Common.Logging.dll
+C:\Работа\SDSolution\SDProjects\ALProjects.Security\bin\Debug\ALProjects.Core.dll
+C:\Работа\SDSolution\SDProjects\ALProjects.Security\bin\Debug\ALProjects.Common.Logging.pdb
+C:\Работа\SDSolution\SDProjects\ALProjects.Security\bin\Debug\ALProjects.Core.pdb
+C:\Работа\SDSolution\SDProjects\ALProjects.Security\obj\Debug\ResolveAssemblyReference.cache
+C:\Работа\SDSolution\SDProjects\ALProjects.Security\obj\Debug\ALProjects.NetSecurity.dll
+C:\Работа\SDSolution\SDProjects\ALProjects.Security\obj\Debug\ALProjects.NetSecurity.pdb
+C:\Работа\SDSolution\SDProjects\ALProjects.Security\bin\Debug\ALProjects.Data.BusinessAccessLevel.dll
+C:\Работа\SDSolution\SDProjects\ALProjects.Security\bin\Debug\ALProjects.Data.Common.dll
+C:\Работа\SDSolution\SDProjects\ALProjects.Security\bin\Debug\ALProjects.Data.BusinessAccessLevel.pdb
+C:\Работа\SDSolution\SDProjects\ALProjects.Security\bin\Debug\ALProjects.Data.Common.pdb

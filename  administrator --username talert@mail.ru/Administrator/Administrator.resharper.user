@@ -1,0 +1,338 @@
+<Configuration>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Qualified:System.Data.SqlClient.SqlConnectionStringBuilder">
+      <Item value="DataSource" priority="0" />
+      <Item value="InitialCatalog" priority="1" />
+      <Item value="UserID" priority="0" />
+      <Item value="Password" priority="0" />
+      <Item value="IntegratedSecurity" priority="0" />
+      <Item value="ConnectTimeout" priority="1" />
+      <Item value="ToString" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:DevExpress.XtraEditors.TextEdit">
+      <Item value="Text" priority="5" />
+      <Item value="EditValue" priority="7" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:DevExpress.XtraEditors.CheckEdit">
+      <Item value="Checked" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Int32">
+      <Item value="Parse" priority="0" />
+      <Item value="TryParse" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Administrator.Controls.SQLConnectionControl">
+      <Item value="ConnectionString" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.SqlClient.SqlConnection">
+      <Item value="Open" priority="0" />
+      <Item value="Close" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@">
+      <Item value="ShowDialog" priority="1" />
+      <Item value="GetValue" priority="0" />
+      <Item value="Product" priority="0" />
+      <Item value="Serialize" priority="1" />
+      <Item value="name" priority="0" />
+      <Item value="Deserialize" priority="0" />
+      <Item value="Open" priority="1" />
+      <Item value="ConnectionString" priority="1" />
+      <Item value="ToString" priority="1" />
+      <Item value="InitialCatalog" priority="3" />
+      <Item value="ExceptionObject" priority="0" />
+      <Item value="Exception" priority="0" />
+      <Item value="CreateDataBase" priority="0" />
+      <Item value="StartUpdateIfNeedIt" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.String">
+      <Item value="Empty" priority="8" />
+      <Item value="IsNullOrEmpty" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:int">
+      <Item value="ToString" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System">
+      <Item value="Configuration" priority="0" />
+      <Item value="Linq" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Administrator.ConfigurationStorage">
+      <Item value="DefaultConfigFile" priority="0" />
+      <Item value="Settings" priority="1" />
+      <Item value="SaveChanges" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Microsoft.Win32.RegistryKey">
+      <Item value="OpenRemoteBaseKey" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Microsoft.Win32.Registry">
+      <Item value="LocalMachine" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Microsoft.Win32.Registry.LocalMachine">
+      <Item value="OpenSubKey" priority="1" />
+      <Item value="GetValue" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Reflection.Assembly">
+      <Item value="GetEntryAssembly" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.IO.Path">
+      <Item value="Combine" priority="1" />
+      <Item value="GetDirectoryName" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.IO.FileMode">
+      <Item value="OpenOrCreate" priority="0" />
+      <Item value="Create" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Administrator.Properties.Settings">
+      <Item value="Default" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Administrator.ConfigurationStorage._settings">
+      <Item value="GetType" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.IO.File">
+      <Item value="Exists" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Administrator.ConfigurationStorage.Settings">
+      <Item value="ConnectionString" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Administrator.ConfigurationStorage._configFile">
+      <Item value="Split" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.IO.Directory">
+      <Item value="CreateDirectory" priority="2" />
+      <Item value="Exists" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Administrator.Utils">
+      <Item value="ChecckConnectionToServer" priority="0" />
+      <Item value="CheckConnectionToDataBase" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@log4net.LogManager">
+      <Item value="GetLogger" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@log4net.Config.XmlConfigurator">
+      <Item value="Configure" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.AppDomain">
+      <Item value="CurrentDomain" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.AppDomain.CurrentDomain">
+      <Item value="UnhandledException" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Administrator.Program.log">
+      <Item value="Fatal" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.Application">
+      <Item value="ThreadException" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.IDbConnection">
+      <Item value="BeginTransaction" priority="0" />
+      <Item value="CreateCommand" priority="3" />
+      <Item value="Open" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.IDbTransaction">
+      <Item value="Commit" priority="0" />
+      <Item value="Rollback" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.IDbCommand">
+      <Item value="Parameters" priority="2" />
+      <Item value="CreateParameter" priority="0" />
+      <Item value="CommandText" priority="2" />
+      <Item value="ExecuteNonQuery" priority="0" />
+      <Item value="ExecuteScalar" priority="0" />
+      <Item value="ExecuteReader" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.IDataParameterCollection">
+      <Item value="Add" priority="1" />
+      <Item value="Contains" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.IDbDataParameter">
+      <Item value="ParameterName" priority="0" />
+      <Item value="Value" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:DevExpress.XtraTabbedMdi.XtraTabbedMdiManager">
+      <Item value="Pages" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:DevExpress.XtraTabbedMdi.XtraMdiTabPageCollection">
+      <Item value="Add" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Administrator.Frames.MainPanelForm">
+      <Item value="MdiParent" priority="0" />
+      <Item value="Show" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:T">
+      <Item value="MdiParent" priority="0" />
+      <Item value="Show" priority="0" />
+      <Item value="Document" priority="0" />
+      <Item value="MainForm" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.Form[]">
+      <Item value="Length" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:object">
+      <Item value="GetType" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Administrator.Frames.MainForm">
+      <Item value="AddOrFocusChild" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@DevExpress">
+      <Item value="Skins" priority="0" />
+      <Item value="Utils" priority="0" />
+      <Item value="UserSkins" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@DevExpress.Skins">
+      <Item value="SkinManager" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@DevExpress.Skins.SkinManager">
+      <Item value="AllowFormSkins" priority="0" />
+      <Item value="Default" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@DevExpress.Skins.SkinManager.Default">
+      <Item value="Skins" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@DevExpress.UserSkins">
+      <Item value="BonusSkins" priority="1" />
+      <Item value="OfficeSkins" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@DevExpress.UserSkins.BonusSkins">
+      <Item value="Register" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@DevExpress.UserSkins.OfficeSkins">
+      <Item value="Register" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:DevExpress.XtraGrid.GridControl">
+      <Item value="DataSource" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Administrator.Frames.PersonDetailsForm">
+      <Item value="Show" priority="0" />
+      <Item value="ShowDialog" priority="0" />
+      <Item value="Person" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Administrator.Objects.Person">
+      <Item value="Description" priority="3" />
+      <Item value="Email" priority="2" />
+      <Item value="FirstName" priority="4" />
+      <Item value="Isq" priority="2" />
+      <Item value="LastName" priority="2" />
+      <Item value="Mobile" priority="2" />
+      <Item value="PersonId" priority="7" />
+      <Item value="Phone" priority="2" />
+      <Item value="Post" priority="2" />
+      <Item value="Sex" priority="2" />
+      <Item value="Surname" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:DevExpress.XtraEditors.MemoEdit">
+      <Item value="EditValue" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:DevExpress.XtraEditors.ComboBoxEdit">
+      <Item value="Text" priority="1" />
+      <Item value="SelectedIndex" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.ComponentModel.CancelEventArgs">
+      <Item value="Cancel" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Administrator.Controls.CustomErrorProvider">
+      <Item value="SetError" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Administrator.Controls.PersonDetailsControl">
+      <Item value="Person" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Administrator.Document">
+      <Item value="UpdatePerson" priority="0" />
+      <Item value="GetPersonList" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Administrator.Controls.PersonListControl.PersonAddEventArgs">
+      <Item value="Person" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.IDataReader">
+      <Item value="Read" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.List&lt;Administrator.Objects.Person&gt;">
+      <Item value="Add" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Administrator.Controls.PersonListControl">
+      <Item value="DataSource" priority="0" />
+      <Item value="FocusRow" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.IDataAdapter">
+      <Item value="FillSchema" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.DataTable">
+      <Item value="BeginLoadData" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.SqlClient.SqlDataAdapter">
+      <Item value="Fill" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:DevExpress.XtraGrid.Views.Grid.GridView">
+      <Item value="FocusedRowHandle" priority="0" />
+      <Item value="RowCount" priority="1" />
+      <Item value="GetRow" priority="0" />
+      <Item value="GetRowCellValue" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Linq">
+      <Item value="Expressions" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+  <EditorManager>
+    <RecentFiles>
+      <File id="DDB05270-69E5-4124-9BAD-44635A346D32/d:Frames/f:ConnectionForm.Designer.cs" caret="1395" scrollPosition="0|26" />
+      <File id="DDB05270-69E5-4124-9BAD-44635A346D32/d:Controls/f:SQLConnectionControl.cs" caret="588" scrollPosition="0|0" />
+      <File id="DDB05270-69E5-4124-9BAD-44635A346D32/d:Properties/f:AssemblyInfo.cs" caret="457" scrollPosition="0|0" />
+      <File id="DDB05270-69E5-4124-9BAD-44635A346D32/f:App.config" caret="194" scrollPosition="0|0" />
+      <File id="DDB05270-69E5-4124-9BAD-44635A346D32/d:Frames/f:ConnectionForm.cs" caret="1583" scrollPosition="0|12" />
+      <File id="DDB05270-69E5-4124-9BAD-44635A346D32/f:Utils.cs" caret="522" scrollPosition="0|0" />
+      <File id="DDB05270-69E5-4124-9BAD-44635A346D32/f:ConfigurationStorage.cs" caret="628" scrollPosition="0|6" />
+      <File id="DDB05270-69E5-4124-9BAD-44635A346D32/f:AdministratorSettings.cs" caret="273" scrollPosition="0|0" />
+      <File id="B25DEA53-E49C-440D-B467-18A685371D18/f:Version.cs" caret="1223" scrollPosition="0|15" />
+      <File id="B25DEA53-E49C-440D-B467-18A685371D18/d:MsSql/f:1.0.0.0.sql" caret="5746" scrollPosition="0|20" />
+      <File id="B25DEA53-E49C-440D-B467-18A685371D18/f:MsSqlVersionController.cs" caret="665" scrollPosition="0|0" />
+      <File id="DDB05270-69E5-4124-9BAD-44635A346D32/d:Frames/f:OrganizationPanel.cs" caret="283" scrollPosition="0|0" />
+      <File id="DDB05270-69E5-4124-9BAD-44635A346D32/d:Frames/f:MainPanel.Designer.cs" caret="0" scrollPosition="0|0" />
+      <File id="DDB05270-69E5-4124-9BAD-44635A346D32/d:Frames/f:ChildForm.cs" caret="265" scrollPosition="0|0" />
+      <File id="DDB05270-69E5-4124-9BAD-44635A346D32/d:Frames/f:MainForm.cs" caret="622" scrollPosition="0|5" />
+      <File id="DDB05270-69E5-4124-9BAD-44635A346D32/f:Program.cs" caret="1019" scrollPosition="0|15" />
+      <File id="DDB05270-69E5-4124-9BAD-44635A346D32/d:Frames/f:MainPanel.cs" caret="670" scrollPosition="0|5" />
+      <File id="DDB05270-69E5-4124-9BAD-44635A346D32/d:Controls/f:PersonDetailsControl.Designer.cs" caret="0" scrollPosition="0|0" />
+      <File id="DDB05270-69E5-4124-9BAD-44635A346D32/d:Controls/f:CustomErrorProvider.Designer.cs" caret="1039" scrollPosition="0|0" />
+      <File id="DDB05270-69E5-4124-9BAD-44635A346D32/d:Controls/f:CustomErrorProvider.cs" caret="1064" scrollPosition="0|17" />
+      <File id="DDB05270-69E5-4124-9BAD-44635A346D32/d:Frames/f:PersonPanel.Designer.cs" caret="0" scrollPosition="0|0" />
+      <File id="DDB05270-69E5-4124-9BAD-44635A346D32/d:Objects/f:Person.cs" caret="402" scrollPosition="0|0" />
+      <File id="DDB05270-69E5-4124-9BAD-44635A346D32/d:Controls/f:PersonDetailsControl.cs" caret="0" scrollPosition="0|0" />
+      <File id="DDB05270-69E5-4124-9BAD-44635A346D32/d:Frames/f:PersonDetailsForm.Designer.cs" caret="0" scrollPosition="0|0" />
+      <File id="DDB05270-69E5-4124-9BAD-44635A346D32/d:Frames/f:PersonDetailsForm.cs" caret="414" scrollPosition="0|6" />
+      <File id="DDB05270-69E5-4124-9BAD-44635A346D32/d:Controls/f:PersonListControl.Designer.cs" caret="0" scrollPosition="0|0" />
+      <File id="DDB05270-69E5-4124-9BAD-44635A346D32/f:Document.cs" caret="1213" scrollPosition="0|6" />
+      <File id="DDB05270-69E5-4124-9BAD-44635A346D32/d:Frames/f:PersonPanel.cs" caret="439" scrollPosition="0|0" />
+      <File id="DDB05270-69E5-4124-9BAD-44635A346D32/d:Controls/f:PersonListControl.cs" caret="1269" scrollPosition="0|15" />
+    </RecentFiles>
+  </EditorManager>
+  <FileStructureView>
+    <AutoScrollToSource>False</AutoScrollToSource>
+    <TrackCaretLocation>False</TrackCaretLocation>
+  </FileStructureView>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <ReFormatCode>
+    <ReorderMembers>False</ReorderMembers>
+    <OptimizeUsings>False</OptimizeUsings>
+    <RemoveRedundantThis>False</RemoveRedundantThis>
+    <ShortenReferences>False</ShortenReferences>
+  </ReFormatCode>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">True</setting>
+    </boolean>
+  </SettingsComponent>
+  <SharedSolutionDisabledTemplatesManager>
+    <DisabledTemplates />
+  </SharedSolutionDisabledTemplatesManager>
+  <UnitTestRunner>
+    <CustomStartDirectory>
+    </CustomStartDirectory>
+    <UseShadowCopy>True</UseShadowCopy>
+    <UseCustomFolder>False</UseCustomFolder>
+    <Providers />
+  </UnitTestRunner>
+  <UserSolutionDisabledTemplatesManager>
+    <DisabledTemplates />
+  </UserSolutionDisabledTemplatesManager>
+</Configuration>

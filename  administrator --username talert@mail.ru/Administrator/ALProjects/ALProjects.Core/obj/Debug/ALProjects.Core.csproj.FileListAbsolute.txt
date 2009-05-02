@@ -1,0 +1,5 @@
+C:\Работа\Pine\PAB\Administrator\ALProjects\ALProjects.Core\obj\Debug\ResolveAssemblyReference.cache
+C:\Работа\Pine\PAB\Administrator\ALProjects\ALProjects.Core\obj\Debug\ALProjects.Core.pdb
+C:\Работа\Pine\PAB\Administrator\ALProjects\ALProjects.Core\bin\Debug\ALProjects.Core.dll
+C:\Работа\Pine\PAB\Administrator\ALProjects\ALProjects.Core\bin\Debug\ALProjects.Core.pdb
+C:\Работа\Pine\PAB\Administrator\ALProjects\ALProjects.Core\obj\Debug\ALProjects.Core.dll
