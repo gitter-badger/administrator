@@ -1,5 +1,0 @@
-﻿alter table organization alter column [name] nvarchar(250)    
-alter table organization alter column [legal_address] nvarchar(250)    
-alter table organization alter column [post_address] nvarchar(250)    
-alter table organization alter column [scope_of_activity] nvarchar(250)    
-alter table organization alter column [address] nvarchar(250)    
