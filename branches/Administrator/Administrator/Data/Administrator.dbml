@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="administrator_db" Class="AdministratorDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=Alert\SQLEXPRESS;Initial Catalog=administrator_db;Integrated Security=True" SettingsObjectName="Administrator.Properties.Settings" SettingsPropertyName="administrator_dbConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.event" Member="events">
+    <Type Name="event">
+      <Column Name="event_id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="contact_person_id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="manager_person_id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="organization_id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="type" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="person_number" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="review" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="price_cash" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="price_non_cash" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="loss" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="state" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="registration_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="exit_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="event_service_event" Member="service_events" OtherKey="event_id" Type="service_event" />
+      <Association Name="Organization_event" Member="Organization" ThisKey="organization_id" OtherKey="OrganizationID" Type="Organization" IsForeignKey="true" />
+      <Association Name="Person_event" Member="person" ThisKey="manager_person_id" OtherKey="PersonID" Type="Person" IsForeignKey="true" />
+      <Association Name="Person_event1" Member="Person1" Storage="_person1" ThisKey="contact_person_id" OtherKey="PersonID" Type="Person" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.setting" Member="settings">
+    <Type Name="setting">
+      <Column Name="[key]" Member="key" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="value" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.image" Member="images">
+    <Type Name="image">
+      <Column Name="image_id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="data" Type="System.Data.Linq.Binary" DbType="Image NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="image_Person" Member="Persons" Storage="_persons" OtherKey="ImageID" Type="Person" />
+    </Type>
+  </Table>
+  <Table Name="dbo.organization" Member="Organizations">
+    <Type Name="Organization">
+      <Column Name="organization_id" Member="OrganizationID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Member="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="short_name" Member="ShortName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="legal_address" Member="LegalAddress" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="post_address" Member="PostAddress" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="address" Member="Address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="email" Member="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="scope_of_activity" Member="ScopeOfActivity" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="phone" Member="Phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="discount" Member="Discount" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="description" Member="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Organization_event" Member="events" ThisKey="OrganizationID" OtherKey="organization_id" Type="event" />
+      <Association Name="Organization_PersonOrganizationRelation" Member="PersonOrganizationRelations" Storage="_person_organizations" ThisKey="OrganizationID" OtherKey="OrganizationID" Type="PersonOrganizationRelation" />
+    </Type>
+  </Table>
+  <Table Name="dbo.person" Member="Persons">
+    <Type Name="Person">
+      <Column Name="person_id" Member="PersonID" Storage="_person_id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="image_id" Member="ImageID" Storage="_image_id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="first_name" Member="FirstName" Storage="_first_name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="last_name" Member="LastName" Storage="_last_name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="surname" Member="Surname" Storage="_surname" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="phone" Member="Phone" Storage="_phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="mobile" Member="Mobile" Storage="_mobile" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="email" Member="Email" Storage="_email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="icq" Member="Icq" Storage="_icq" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="sex" Member="Sex" Storage="_sex" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="description" Member="Description" Storage="_description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Person_event" Member="events" ThisKey="PersonID" OtherKey="manager_person_id" Type="event" />
+      <Association Name="Person_event1" Member="events1" ThisKey="PersonID" OtherKey="contact_person_id" Type="event" />
+      <Association Name="Person_PersonOrganizationRelation" Member="PersonOrganizationRelations" Storage="_person_organizations" ThisKey="PersonID" OtherKey="PersonID" Type="PersonOrganizationRelation" />
+      <Association Name="image_Person" Member="image" ThisKey="ImageID" Type="image" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.person_organization" Member="PersonOrganizationRelations">
+    <Type Name="PersonOrganizationRelation">
+      <Column Name="person_id" Member="PersonID" Storage="_person_id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="organization_id" Member="OrganizationID" Storage="_organization_id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="post" Member="Post" Storage="_post" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Organization_PersonOrganizationRelation" Member="Organization" ThisKey="OrganizationID" OtherKey="OrganizationID" Type="Organization" IsForeignKey="true" />
+      <Association Name="Person_PersonOrganizationRelation" Member="Person" Storage="_person" ThisKey="PersonID" OtherKey="PersonID" Type="Person" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.service" Member="services">
+    <Type Name="service">
+      <Column Name="service_id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="service_type_id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="service_service_event" Member="service_events" OtherKey="service_id" Type="service_event" />
+      <Association Name="service_type_service" Member="service_type" ThisKey="service_type_id" Type="service_type" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.service_event" Member="service_events">
+    <Type Name="service_event">
+      <Column Name="service_event_id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="event_id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="service_id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="start_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="end_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="event_service_event" Member="event" ThisKey="event_id" Type="event" IsForeignKey="true" />
+      <Association Name="service_service_event" Member="service" ThisKey="service_id" Type="service" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.service_type" Member="service_types">
+    <Type Name="service_type">
+      <Column Name="service_type_id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="service_type_service" Member="services" OtherKey="service_type_id" Type="service" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_organization_list" Member="OrganizationLists">
+    <Type Name="OrganizationList">
+      <Column Name="organization_id" Member="OrganizationID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Member="Name" Type="System.String" DbType="NVarChar(250)" CanBeNull="false" />
+      <Column Name="short_name" Member="ShortName" Type="System.String" DbType="NVarChar(50)" CanBeNull="false" />
+      <Column Name="legal_address" Member="LegalAddress" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="post_address" Member="PostAddress" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="address" Member="Address" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="email" Member="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="scope_of_activity" Member="ScopeOfActivity" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="phone" Member="Phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="discount" Member="Discount" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="description" Member="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="canceled_count" Member="CanceledCount" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="finished_count" Member="FinishedCount" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="director_name" Member="Director" Type="System.String" DbType="NVarChar(152)" CanBeNull="true" />
+      <Column Name="is_in_blacklist" Member="IsInBlackList" Type="System.Boolean" DbType="Bit" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.black_list" Member="BlackLists">
+    <Type Name="BlackList">
+      <Column Name="black_list_id" Member="BlackListID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="date" Member="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="description" Member="Description" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
