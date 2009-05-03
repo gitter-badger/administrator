@@ -121,11 +121,6 @@ ELSE
 
         }
 
-        public void UpdateOrganization(Organization organization)
-        {
-
-        }
-
         public void UpdateEvent(Event ev)
         {
             if (ev == null) return;
@@ -221,15 +216,6 @@ UPDATE [dbo].[event]
                         command.Parameters.Clear();
 
                         command.CommandText = @"
-UPDATE [dbo].[organization]
-   SET 
-      [cancellation_number] = [cancellation_number] + 1
-WHERE [organization_id] =  
-	(SELECT [o].[organization_id] FROM [dbo].[organization] as [o]
-	 INNER JOIN [dbo].[event] as [ev] ON [o].[organization_id] = [ev].[organization_id]
-	 WHERE [ev].[event_id] = @eventId
-	)
-
 DELETE FROM [dbo].[service_event]
       WHERE [event_id] = @eventId
 ";
@@ -451,29 +437,6 @@ SELECT DISTINCT [post] FROM [person_organization] ORDER BY [post] ASC
                     while (reader.Read())
                     {
                         result.Add(reader["post"]);
-                    }
-                }
-            }
-
-            return result.ToArray();
-        }
-
-        public Object[] GetScopesOfActivity()
-        {
-            var result = new List<object>();
-
-            using (IDbConnection connection = CreateConnection())
-            {
-                IDbCommand command = connection.CreateCommand();
-                command.CommandText = @"
-SELECT DISTINCT [scope_of_activity] FROM [dbo].[organization] ORDER BY [scope_of_activity] ASC
-                ";
-
-                using (IDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        result.Add(reader["scope_of_activity"]);
                     }
                 }
             }

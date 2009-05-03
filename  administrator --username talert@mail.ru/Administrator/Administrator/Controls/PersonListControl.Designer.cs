@@ -31,7 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PersonListControl));
             this.personGrid = new DevExpress.XtraGrid.GridControl();
-            this.MainView1 = new DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView();
+            this.LinqSource = new DevExpress.Data.Linq.LinqServerModeSource();
+            this.MainView = new DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView();
             this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.columnPhoto = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.PictureEdit = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
@@ -41,18 +42,17 @@
             this.columnLastName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.columnMobile = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.columnEmail = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.columnIcq = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.columnEmail = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand5 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.columnOrganizationName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.columnPost = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.columnOrganizationName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand6 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.columnDescription = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.MemoExEdit = new DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit();
             this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.columnPersonId = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.columnImageId = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.MainView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.barManager = new DevExpress.XtraBars.BarManager(this.components);
             this.personToolBar = new DevExpress.XtraBars.Bar();
             this.newPersonBatton = new DevExpress.XtraBars.BarButtonItem();
@@ -65,40 +65,42 @@
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.addPerson = new DevExpress.XtraBars.BarButtonItem();
             this.images = new DevExpress.Utils.ImageCollection(this.components);
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.personGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MainView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LinqSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MainView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MemoExEdit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MainView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.images)).BeginInit();
             this.SuspendLayout();
             // 
             // personGrid
             // 
+            this.personGrid.DataSource = this.LinqSource;
             this.personGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.personGrid.Location = new System.Drawing.Point(0, 34);
-            this.personGrid.MainView = this.MainView1;
+            this.personGrid.MainView = this.MainView;
             this.personGrid.Name = "personGrid";
             this.personGrid.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.PictureEdit,
             this.MemoExEdit});
+            this.personGrid.ServerMode = true;
             this.personGrid.Size = new System.Drawing.Size(814, 425);
             this.personGrid.TabIndex = 0;
             this.personGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.MainView1,
             this.MainView});
             // 
-            // MainView1
+            // MainView
             // 
-            this.MainView1.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
+            this.MainView.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
             this.gridBand2,
             this.gridBand1,
             this.gridBand4,
             this.gridBand5,
             this.gridBand6,
             this.gridBand3});
-            this.MainView1.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
+            this.MainView.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
             this.columnPersonId,
             this.columnFirstName,
             this.columnLastName,
@@ -111,23 +113,25 @@
             this.columnPost,
             this.columnDescription,
             this.columnImageId});
-            this.MainView1.GridControl = this.personGrid;
-            this.MainView1.Name = "MainView1";
-            this.MainView1.OptionsNavigation.AutoFocusNewRow = true;
-            this.MainView1.OptionsView.AnimationType = DevExpress.XtraGrid.Views.Base.GridAnimationType.AnimateFocusedItem;
-            this.MainView1.OptionsView.AutoCalcPreviewLineCount = true;
-            this.MainView1.OptionsView.ColumnAutoWidth = true;
-            this.MainView1.OptionsView.EnableAppearanceEvenRow = true;
-            this.MainView1.OptionsView.EnableAppearanceOddRow = true;
-            this.MainView1.OptionsView.ShowAutoFilterRow = true;
-            this.MainView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.MainView1_FocusedRowChanged);
-            this.MainView1.DoubleClick += new System.EventHandler(this.MainView1_DoubleClick);
+            this.MainView.CustomizationFormBounds = new System.Drawing.Rectangle(504, 375, 217, 203);
+            this.MainView.GridControl = this.personGrid;
+            this.MainView.Name = "MainView";
+            this.MainView.OptionsNavigation.AutoFocusNewRow = true;
+            this.MainView.OptionsView.AnimationType = DevExpress.XtraGrid.Views.Base.GridAnimationType.AnimateFocusedItem;
+            this.MainView.OptionsView.AutoCalcPreviewLineCount = true;
+            this.MainView.OptionsView.ColumnAutoWidth = true;
+            this.MainView.OptionsView.EnableAppearanceEvenRow = true;
+            this.MainView.OptionsView.EnableAppearanceOddRow = true;
+            this.MainView.OptionsView.ShowAutoFilterRow = true;
+            this.MainView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.MainView1_FocusedRowChanged);
+            this.MainView.DoubleClick += new System.EventHandler(this.MainView1_DoubleClick);
             // 
             // gridBand2
             // 
             this.gridBand2.Caption = "Фото";
             this.gridBand2.Columns.Add(this.columnPhoto);
             this.gridBand2.ImageAlignment = System.Drawing.StringAlignment.Center;
+            this.gridBand2.MinWidth = 20;
             this.gridBand2.Name = "gridBand2";
             this.gridBand2.RowCount = 2;
             this.gridBand2.Width = 73;
@@ -135,7 +139,7 @@
             // columnPhoto
             // 
             this.columnPhoto.ColumnEdit = this.PictureEdit;
-            this.columnPhoto.FieldName = "image";
+            this.columnPhoto.FieldName = "Photo";
             this.columnPhoto.Name = "columnPhoto";
             this.columnPhoto.OptionsColumn.AllowEdit = false;
             this.columnPhoto.OptionsColumn.AllowFocus = false;
@@ -159,6 +163,7 @@
             this.gridBand1.Columns.Add(this.columnSurName);
             this.gridBand1.Columns.Add(this.columnFirstName);
             this.gridBand1.Columns.Add(this.columnLastName);
+            this.gridBand1.MinWidth = 20;
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.Width = 386;
             // 
@@ -173,7 +178,7 @@
             this.columnSurName.AppearanceHeader.Options.UseTextOptions = true;
             this.columnSurName.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.columnSurName.Caption = "Фамилия";
-            this.columnSurName.FieldName = "surname";
+            this.columnSurName.FieldName = "Surname";
             this.columnSurName.Name = "columnSurName";
             this.columnSurName.OptionsColumn.AllowEdit = false;
             this.columnSurName.OptionsColumn.AllowFocus = false;
@@ -194,7 +199,7 @@
             this.columnFirstName.AppearanceHeader.Options.UseTextOptions = true;
             this.columnFirstName.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.columnFirstName.Caption = "Имя";
-            this.columnFirstName.FieldName = "first_name";
+            this.columnFirstName.FieldName = "FirstName";
             this.columnFirstName.Name = "columnFirstName";
             this.columnFirstName.OptionsColumn.AllowEdit = false;
             this.columnFirstName.OptionsColumn.AllowFocus = false;
@@ -215,7 +220,7 @@
             this.columnLastName.AppearanceHeader.Options.UseTextOptions = true;
             this.columnLastName.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.columnLastName.Caption = "Отчество";
-            this.columnLastName.FieldName = "last_name";
+            this.columnLastName.FieldName = "LastName";
             this.columnLastName.Name = "columnLastName";
             this.columnLastName.OptionsColumn.AllowEdit = false;
             this.columnLastName.OptionsColumn.AllowFocus = false;
@@ -229,15 +234,16 @@
             // 
             this.gridBand4.Caption = "Контактные данные";
             this.gridBand4.Columns.Add(this.columnMobile);
-            this.gridBand4.Columns.Add(this.columnEmail);
             this.gridBand4.Columns.Add(this.columnIcq);
+            this.gridBand4.Columns.Add(this.columnEmail);
+            this.gridBand4.MinWidth = 20;
             this.gridBand4.Name = "gridBand4";
             this.gridBand4.Width = 246;
             // 
             // columnMobile
             // 
             this.columnMobile.Caption = "Сотовый";
-            this.columnMobile.FieldName = "mobile";
+            this.columnMobile.FieldName = "Mobile";
             this.columnMobile.Name = "columnMobile";
             this.columnMobile.OptionsColumn.AllowEdit = false;
             this.columnMobile.OptionsColumn.AllowFocus = false;
@@ -246,55 +252,45 @@
             this.columnMobile.Visible = true;
             this.columnMobile.Width = 246;
             // 
-            // columnEmail
-            // 
-            this.columnEmail.Caption = "e-mail";
-            this.columnEmail.FieldName = "email";
-            this.columnEmail.Name = "columnEmail";
-            this.columnEmail.OptionsColumn.AllowEdit = false;
-            this.columnEmail.OptionsColumn.AllowFocus = false;
-            this.columnEmail.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.columnEmail.OptionsColumn.ReadOnly = true;
-            this.columnEmail.RowIndex = 1;
-            this.columnEmail.Visible = true;
-            this.columnEmail.Width = 246;
-            // 
             // columnIcq
             // 
             this.columnIcq.Caption = "ICQ";
-            this.columnIcq.FieldName = "icq";
+            this.columnIcq.FieldName = "Icq";
             this.columnIcq.Name = "columnIcq";
             this.columnIcq.OptionsColumn.AllowEdit = false;
             this.columnIcq.OptionsColumn.AllowFocus = false;
             this.columnIcq.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
             this.columnIcq.OptionsColumn.ReadOnly = true;
-            this.columnIcq.RowIndex = 2;
+            this.columnIcq.RowIndex = 1;
             this.columnIcq.Visible = true;
             this.columnIcq.Width = 246;
+            // 
+            // columnEmail
+            // 
+            this.columnEmail.Caption = "e-mail";
+            this.columnEmail.FieldName = "Email";
+            this.columnEmail.Name = "columnEmail";
+            this.columnEmail.OptionsColumn.AllowEdit = false;
+            this.columnEmail.OptionsColumn.AllowFocus = false;
+            this.columnEmail.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.columnEmail.OptionsColumn.ReadOnly = true;
+            this.columnEmail.RowIndex = 2;
+            this.columnEmail.Visible = true;
+            this.columnEmail.Width = 246;
             // 
             // gridBand5
             // 
             this.gridBand5.Caption = "Работа";
-            this.gridBand5.Columns.Add(this.columnOrganizationName);
             this.gridBand5.Columns.Add(this.columnPost);
+            this.gridBand5.Columns.Add(this.columnOrganizationName);
+            this.gridBand5.MinWidth = 20;
             this.gridBand5.Name = "gridBand5";
             this.gridBand5.Width = 299;
-            // 
-            // columnOrganizationName
-            // 
-            this.columnOrganizationName.Caption = "Организация";
-            this.columnOrganizationName.FieldName = "organization_name";
-            this.columnOrganizationName.Name = "columnOrganizationName";
-            this.columnOrganizationName.OptionsColumn.AllowEdit = false;
-            this.columnOrganizationName.OptionsColumn.AllowFocus = false;
-            this.columnOrganizationName.OptionsColumn.ReadOnly = true;
-            this.columnOrganizationName.Visible = true;
-            this.columnOrganizationName.Width = 299;
             // 
             // columnPost
             // 
             this.columnPost.Caption = "Должность";
-            this.columnPost.FieldName = "post";
+            this.columnPost.FieldName = "Post";
             this.columnPost.Name = "columnPost";
             this.columnPost.OptionsColumn.AllowEdit = false;
             this.columnPost.OptionsColumn.AllowFocus = false;
@@ -304,10 +300,22 @@
             this.columnPost.Visible = true;
             this.columnPost.Width = 299;
             // 
+            // columnOrganizationName
+            // 
+            this.columnOrganizationName.Caption = "Организация";
+            this.columnOrganizationName.FieldName = "OrganizationName";
+            this.columnOrganizationName.Name = "columnOrganizationName";
+            this.columnOrganizationName.OptionsColumn.AllowEdit = false;
+            this.columnOrganizationName.OptionsColumn.AllowFocus = false;
+            this.columnOrganizationName.OptionsColumn.ReadOnly = true;
+            this.columnOrganizationName.Visible = true;
+            this.columnOrganizationName.Width = 299;
+            // 
             // gridBand6
             // 
             this.gridBand6.Caption = "Заметки";
             this.gridBand6.Columns.Add(this.columnDescription);
+            this.gridBand6.MinWidth = 20;
             this.gridBand6.Name = "gridBand6";
             this.gridBand6.OptionsBand.AllowSize = false;
             this.gridBand6.OptionsBand.FixedWidth = true;
@@ -316,7 +324,7 @@
             // columnDescription
             // 
             this.columnDescription.ColumnEdit = this.MemoExEdit;
-            this.columnDescription.FieldName = "description";
+            this.columnDescription.FieldName = "Description";
             this.columnDescription.Name = "columnDescription";
             this.columnDescription.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
             this.columnDescription.OptionsColumn.AllowSize = false;
@@ -337,6 +345,7 @@
             // gridBand3
             // 
             this.gridBand3.Caption = "unvisible";
+            this.gridBand3.MinWidth = 20;
             this.gridBand3.Name = "gridBand3";
             this.gridBand3.Visible = false;
             this.gridBand3.Width = 114;
@@ -344,26 +353,19 @@
             // columnPersonId
             // 
             this.columnPersonId.Caption = "person_id";
-            this.columnPersonId.FieldName = "person_id";
+            this.columnPersonId.FieldName = "PersonID";
             this.columnPersonId.Name = "columnPersonId";
             this.columnPersonId.OptionsColumn.AllowEdit = false;
             this.columnPersonId.OptionsColumn.AllowFocus = false;
             this.columnPersonId.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
             this.columnPersonId.OptionsColumn.ReadOnly = true;
-            this.columnPersonId.Visible = true;
             this.columnPersonId.Width = 114;
             // 
             // columnImageId
             // 
             this.columnImageId.Caption = "image_id";
-            this.columnImageId.FieldName = "image_id";
+            this.columnImageId.FieldName = "ImageID";
             this.columnImageId.Name = "columnImageId";
-            this.columnImageId.Visible = true;
-            // 
-            // MainView
-            // 
-            this.MainView.GridControl = this.personGrid;
-            this.MainView.Name = "MainView";
             // 
             // barManager
             // 
@@ -382,8 +384,9 @@
             this.addPerson,
             this.newPersonBatton,
             this.editPersonBatton,
-            this.barButtonItem3});
-            this.barManager.MaxItemId = 5;
+            this.barButtonItem3,
+            this.barButtonItem1});
+            this.barManager.MaxItemId = 6;
             // 
             // personToolBar
             // 
@@ -394,7 +397,8 @@
             this.personToolBar.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.newPersonBatton, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.editPersonBatton, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem3, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem3, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem1, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.personToolBar.OptionsBar.DisableClose = true;
             this.personToolBar.OptionsBar.DrawDragBorder = false;
             this.personToolBar.OptionsBar.UseWholeRow = true;
@@ -442,6 +446,14 @@
             // 
             this.images.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("images.ImageStream")));
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "В чёрный список";
+            this.barButtonItem1.Glyph = global::Administrator.Properties.Resources.sad_face_24;
+            this.barButtonItem1.Id = 5;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            // 
             // PersonListControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -454,10 +466,10 @@
             this.Name = "PersonListControl";
             this.Size = new System.Drawing.Size(814, 459);
             ((System.ComponentModel.ISupportInitialize)(this.personGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MainView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LinqSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MainView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MemoExEdit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MainView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.images)).EndInit();
             this.ResumeLayout(false);
@@ -467,7 +479,6 @@
         #endregion
 
         private DevExpress.XtraGrid.GridControl personGrid;
-        private DevExpress.XtraGrid.Views.Grid.GridView MainView;
         private DevExpress.XtraBars.BarManager barManager;
         private DevExpress.XtraBars.Bar personToolBar;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
@@ -477,7 +488,7 @@
         private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraBars.BarButtonItem addPerson;
         private DevExpress.Utils.ImageCollection images;
-        private DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView MainView1;
+        private DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView MainView;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn columnPersonId;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn columnFirstName;
@@ -501,6 +512,8 @@
         private DevExpress.XtraBars.BarButtonItem editPersonBatton;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn columnImageId;
+        private DevExpress.Data.Linq.LinqServerModeSource LinqSource;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
 
     }
 }

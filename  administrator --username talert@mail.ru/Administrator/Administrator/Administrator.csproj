@@ -194,6 +194,7 @@
       <DependentUpon>Administrator.dbml</DependentUpon>
     </Compile>
     <Compile Include="Data\DevExServerModeSourceQuerebleProxy.cs" />
+    <Compile Include="Data\PersonList.cs" />
     <Compile Include="Document.cs" />
     <Compile Include="EventArgsReferences\DataTableNeededEventArgs.cs" />
     <Compile Include="EventArgsReferences\MovedToBlackListEventArgs.cs" />

@@ -89,6 +89,7 @@
     <EmbeddedResource Include="MsSql\1.0.0.1.sql" />
     <EmbeddedResource Include="MsSql\1.0.0.3.sql" />
     <EmbeddedResource Include="MsSql\1.0.0.4.sql" />
+    <EmbeddedResource Include="MsSql\1.0.1.5.sql" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

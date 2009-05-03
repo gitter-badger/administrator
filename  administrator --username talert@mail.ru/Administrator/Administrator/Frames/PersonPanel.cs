@@ -10,16 +10,17 @@ namespace Administrator.Frames
             InitializeComponent();
         }
 
-        private void personListControl_PersonAdded(object sender, PersonUpdateEventArgs e)
+        private void personListControl_PersonUpdateed(object sender, PersonUpdateEventArgs e)
         {
-            Document.UpdatePerson(e.Person);
-            Document.UpdateDocument();
-            personListControl.FocusRow(e.Person.PersonId);
+            //Document.UpdatePerson(e.Person);
+            //Document.UpdateDocument();
+            //personListControl.FocusRow(e.Person.PersonId);
+            Program.CurrentDataContext.UpdateOrInsertPerson(e.Person);
         }
 
         private void PersonPanel_Shown(object sender, EventArgs e)
         {
-            personListControl.DataSource = Document.AllPersons;
+            personListControl.DataSource = Program.CurrentDataContext.GetPersonsQuerry();
         }
     }
 }

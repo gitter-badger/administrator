@@ -184,7 +184,11 @@
             this.MainView.Name = "MainView";
             this.MainView.OptionsDetail.EnableMasterViewMode = false;
             this.MainView.OptionsNavigation.AutoFocusNewRow = true;
+            this.MainView.OptionsView.AnimationType = DevExpress.XtraGrid.Views.Base.GridAnimationType.AnimateFocusedItem;
+            this.MainView.OptionsView.AutoCalcPreviewLineCount = true;
             this.MainView.OptionsView.ColumnAutoWidth = true;
+            this.MainView.OptionsView.EnableAppearanceEvenRow = true;
+            this.MainView.OptionsView.EnableAppearanceOddRow = true;
             this.MainView.OptionsView.ShowAutoFilterRow = true;
             this.MainView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.MainView_FocusedRowChanged);
             this.MainView.DoubleClick += new System.EventHandler(this.MainView_DoubleClick);

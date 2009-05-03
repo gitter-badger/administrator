@@ -30,12 +30,12 @@
       <Column Name="value" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.image" Member="images">
-    <Type Name="image">
-      <Column Name="image_id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="data" Type="System.Data.Linq.Binary" DbType="Image NOT NULL" CanBeNull="false" UpdateCheck="Never" />
-      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="image_Person" Member="Persons" Storage="_persons" OtherKey="ImageID" Type="Person" />
+  <Table Name="dbo.image" Member="Imgs">
+    <Type Name="Img">
+      <Column Name="image_id" Member="ImageID" Storage="_image_id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="data" Member="Data" Storage="_data" Type="System.Data.Linq.Binary" DbType="Image NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="name" Member="Name" Storage="_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Img_Person" Member="Persons" Storage="_persons" ThisKey="ImageID" OtherKey="ImageID" Type="Person" />
     </Type>
   </Table>
   <Table Name="dbo.organization" Member="Organizations">
@@ -71,13 +71,13 @@
       <Association Name="Person_event" Member="events" ThisKey="PersonID" OtherKey="manager_person_id" Type="event" />
       <Association Name="Person_event1" Member="events1" ThisKey="PersonID" OtherKey="contact_person_id" Type="event" />
       <Association Name="Person_PersonOrganizationRelation" Member="PersonOrganizationRelations" Storage="_person_organizations" ThisKey="PersonID" OtherKey="PersonID" Type="PersonOrganizationRelation" />
-      <Association Name="image_Person" Member="image" ThisKey="ImageID" Type="image" IsForeignKey="true" />
+      <Association Name="Img_Person" Member="Img" Storage="_image" ThisKey="ImageID" OtherKey="ImageID" Type="Img" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.person_organization" Member="PersonOrganizationRelations">
     <Type Name="PersonOrganizationRelation">
-      <Column Name="person_id" Member="PersonID" Storage="_person_id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="organization_id" Member="OrganizationID" Storage="_organization_id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="person_id" Member="PersonID" Storage="_person_id" Type="System.Guid" DbType="UniqueIdentifier" IsPrimaryKey="true" CanBeNull="true" />
+      <Column Name="organization_id" Member="OrganizationID" Storage="_organization_id" Type="System.Guid" DbType="UniqueIdentifier" IsPrimaryKey="true" CanBeNull="true" />
       <Column Name="post" Member="Post" Storage="_post" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="Organization_PersonOrganizationRelation" Member="Organization" ThisKey="OrganizationID" OtherKey="OrganizationID" Type="Organization" IsForeignKey="true" />
       <Association Name="Person_PersonOrganizationRelation" Member="Person" Storage="_person" ThisKey="PersonID" OtherKey="PersonID" Type="Person" IsForeignKey="true" />
@@ -135,6 +135,25 @@
       <Column Name="black_list_id" Member="BlackListID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="date" Member="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="description" Member="Description" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_person_list" Member="PersonLists">
+    <Type Name="PersonList">
+      <Column Name="person_id" Member="PersonID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="image_id" Member="ImageID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="first_name" Member="FirstName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="last_name" Member="LastName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="surname" Member="Surname" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="phone" Member="Phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="mobile" Member="Mobile" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="email" Member="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="icq" Member="Icq" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="sex" Member="Sex" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="description" Member="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="photo" Member="Image" Storage="_Photo" Type="System.Byte[]" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="organization_id" Member="OrganizationID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="post" Member="Post" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="organization_name" Member="OrganizationName" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

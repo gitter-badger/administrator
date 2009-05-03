@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Data;
+using System.Linq;
 using System.Windows.Forms;
+using Administrator.Data;
 using Administrator.Frames;
-using Administrator.Objects;
 using DevExpress.XtraEditors;
 using log4net;
 
@@ -20,59 +20,60 @@ namespace Administrator.Controls
             UpdateMenuState();
         }
 
-        public object DataSource
+        public IQueryable DataSource
         {
-            set { personGrid.DataSource = value; }
+            set { LinqSource.QueryableSource = value; }
         }
 
         public void FocusRow(Guid personId)
         {
-            int handle = -1;
+            //int handle = -1;
 
-            for (int i = 0; i < MainView.RowCount; i++)
-            {
-                if ((Guid)MainView.GetRowCellValue(i, "person_id") == personId)
-                {
-                    handle = i;
-                    break;
-                }
-            }
+            //for (int i = 0; i < MainView.RowCount; i++)
+            //{
+            //    if ((Guid)MainView.GetRowCellValue(i, "person_id") == personId)
+            //    {
+            //        handle = i;
+            //        break;
+            //    }
+            //}
 
-            if (handle != -1)
-            {
-                MainView.FocusedRowHandle = handle;
-            }
+            //if (handle != -1)
+            //{
+            //    MainView.FocusedRowHandle = handle;
+            //}
         }
 
-        public Person CurrentPerson
+        public PersonList CurrentPerson
         {
             get
             {
-                var row = (DataRowView)MainView1.GetRow(MainView1.FocusedRowHandle);
-
-                return row == null ? null : Entity.Assign<Person>(row.Row);
+                return MainView.GetRow(MainView.FocusedRowHandle) as PersonList;
             }
         }
 
-        protected void OnPersonUpdated(PersonUpdateEventArgs e)
+        public void ReloadData()
+        {
+            var focused = MainView.FocusedRowHandle;
+            LinqSource.Reload();
+            MainView.RefreshData();
+            MainView.FocusedRowHandle = focused;
+            MainView.SelectRow(focused);
+            UpdateMenuState();
+        }
+
+        private void OnPersonUpdated(PersonUpdateEventArgs e)
         {
             if (PersonUpdated != null) PersonUpdated(this, e);
         }
 
         private void EditPersonDetails(bool isNewPerson)
         {
-            var baseFrame = this.ParentForm as BaseFrame;
-
-            if (baseFrame == null)
-            {
-                throw new ApplicationException("MastBe placed in ChildFrame");
-            }
-
-            using (var form = baseFrame.CreateFrame<PersonDetailsFrame>())
+            using (var form = new PersonDetailsFrame())
             {
                 if (isNewPerson)
                 {
-                    form.Person = new Person { PersonId = Guid.NewGuid() };
+                    form.Person = new PersonList { PersonID = Guid.NewGuid() };
                 }
                 else
                 {
@@ -83,6 +84,15 @@ namespace Administrator.Controls
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     OnPersonUpdated(new PersonUpdateEventArgs(form.Person));
+                    if (isNewPerson)
+                    {
+                        LinqSource.Reload();
+                        FocusRow(form.Person.PersonID);
+                    }
+                    else
+                    {
+                        ReloadData();
+                    }
                 }
             }
         }
@@ -126,14 +136,14 @@ namespace Administrator.Controls
 
     public class PersonUpdateEventArgs : EventArgs
     {
-        private readonly Person person;
+        private readonly PersonList person;
 
-        public Person Person
+        public PersonList Person
         {
             get { return person; }
         }
 
-        public PersonUpdateEventArgs(Person person)
+        public PersonUpdateEventArgs(PersonList person)
         {
             this.person = person;
         }

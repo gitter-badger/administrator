@@ -112,9 +112,25 @@ namespace tAlert.DbVersion
 
         #region private members
 
-        private static string[] SplitWithGo(string querry)
+        private List<string> SplitWithGo(string querry)
         {
-            string[] result = querry.Split(new[] { "\nGO\r", "\ngo\r" }, StringSplitOptions.RemoveEmptyEntries);
+            var badCnars = new List<char> {' ', '\r','\n'};
+
+            var splited = querry.Split(new[] { "\nGO\r", "\ngo\r", "\nGo\r" }, StringSplitOptions.RemoveEmptyEntries);
+
+            var result = new List<string>();
+
+            foreach (var str in splited)
+            {
+                foreach (var c in str)
+                {
+                    if(!badCnars.Contains(c))
+                    {
+                        result.Add(str);
+                        break;
+                    }
+                }
+            }
 
             return result;
         }

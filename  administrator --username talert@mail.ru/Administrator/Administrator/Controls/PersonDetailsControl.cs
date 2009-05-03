@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Text;
-using Administrator.Objects;
+using Administrator.Data;
 using DevExpress.XtraEditors;
 
 namespace Administrator.Controls
 {
     public partial class PersonDetailsControl : XtraUserControl
     {
-        private Person person;
+        private PersonList person;
 
         private bool isPhotoSet;
 
@@ -16,7 +15,7 @@ namespace Administrator.Controls
             InitializeComponent();
         }
 
-        public Person Person
+        public PersonList Person
         {
             get
             {
@@ -30,7 +29,7 @@ namespace Administrator.Controls
             }
         }
 
-        public Object OrganizationListDataSource
+        public object OrganizationListDataSource
         {
             set { organizationLookUpEdit.Properties.DataSource = value; }
         }
@@ -39,7 +38,10 @@ namespace Administrator.Controls
         {
             set
             {
-                postComboEdit.Properties.Items.AddRange(value);
+                if (value != null && value.Length > 0)
+                {
+                    postComboEdit.Properties.Items.AddRange(value);
+                }
             }
         }
 
@@ -48,7 +50,7 @@ namespace Administrator.Controls
             person.Description = descriptionEdit.EditValue as string;
             person.Email = emailEdit.EditValue as string;
             person.FirstName = firstNameEdit.EditValue as string;
-            person.Isq = isqEdit.EditValue as string;
+            person.Icq = isqEdit.EditValue as string;
             person.LastName = lastNameEdit.EditValue as string;
             person.Mobile = mobileEdit.EditValue as string;
             person.Phone = phoneEdit.EditValue as string;
@@ -56,7 +58,7 @@ namespace Administrator.Controls
             person.Surname = surNameEdit.EditValue as string;
             person.Photo = isPhotoSet ? photoEdit.Image : null;
             person.Post = postComboEdit.EditValue as string;
-            person.OrganizationId = (Guid)(organizationLookUpEdit.EditValue ?? Guid.Empty);
+            person.OrganizationID = (Guid)(organizationLookUpEdit.EditValue ?? Guid.Empty);
         }
 
         private void SetPersonInfo()
@@ -64,14 +66,14 @@ namespace Administrator.Controls
             descriptionEdit.EditValue = person.Description;
             emailEdit.EditValue = person.Email;
             firstNameEdit.EditValue = person.FirstName;
-            isqEdit.EditValue = person.Isq;
+            isqEdit.EditValue = person.Icq;
             lastNameEdit.EditValue = person.LastName;
             mobileEdit.EditValue = person.Mobile;
             phoneEdit.EditValue = person.Phone;
             postComboEdit.Text = person.Post;
             sexComboEdit.SelectedIndex = person.Sex ? 0 : 1;
             surNameEdit.EditValue = person.Surname;
-            isPhotoSet = person.ImageId != Guid.Empty;
+            isPhotoSet = person.ImageID.HasValue;
             if (!isPhotoSet)
             {
                 photoEdit.Image = person.Sex ? Properties.Resources.businessman2 : Properties.Resources.woman4;
@@ -81,9 +83,9 @@ namespace Administrator.Controls
                 photoEdit.Image = person.Photo;
             }
 
-            if (person.OrganizationId != Guid.Empty)
+            if (person.OrganizationID != Guid.Empty)
             {
-                organizationLookUpEdit.EditValue = person.OrganizationId;
+                organizationLookUpEdit.EditValue = person.OrganizationID;
             }
 
             postComboEdit.EditValue = person.Post;

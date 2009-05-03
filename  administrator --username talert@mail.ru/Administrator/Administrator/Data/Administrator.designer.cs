@@ -36,15 +36,18 @@ namespace Administrator.Data
     partial void Insertsetting(setting instance);
     partial void Updatesetting(setting instance);
     partial void Deletesetting(setting instance);
-    partial void Insertimage(image instance);
-    partial void Updateimage(image instance);
-    partial void Deleteimage(image instance);
+    partial void InsertImg(Img instance);
+    partial void UpdateImg(Img instance);
+    partial void DeleteImg(Img instance);
     partial void InsertOrganization(Organization instance);
     partial void UpdateOrganization(Organization instance);
     partial void DeleteOrganization(Organization instance);
     partial void InsertPerson(Person instance);
     partial void UpdatePerson(Person instance);
     partial void DeletePerson(Person instance);
+    partial void InsertPersonOrganizationRelation(PersonOrganizationRelation instance);
+    partial void UpdatePersonOrganizationRelation(PersonOrganizationRelation instance);
+    partial void DeletePersonOrganizationRelation(PersonOrganizationRelation instance);
     partial void Insertservice(service instance);
     partial void Updateservice(service instance);
     partial void Deleteservice(service instance);
@@ -60,6 +63,9 @@ namespace Administrator.Data
     partial void InsertBlackList(BlackList instance);
     partial void UpdateBlackList(BlackList instance);
     partial void DeleteBlackList(BlackList instance);
+    partial void InsertPersonList(PersonList instance);
+    partial void UpdatePersonList(PersonList instance);
+    partial void DeletePersonList(PersonList instance);
     #endregion
 		
 		public AdministratorDataContext() : 
@@ -108,11 +114,11 @@ namespace Administrator.Data
 			}
 		}
 		
-		public System.Data.Linq.Table<image> images
+		public System.Data.Linq.Table<Img> Imgs
 		{
 			get
 			{
-				return this.GetTable<image>();
+				return this.GetTable<Img>();
 			}
 		}
 		
@@ -177,6 +183,14 @@ namespace Administrator.Data
 			get
 			{
 				return this.GetTable<BlackList>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PersonList> PersonLists
+		{
+			get
+			{
+				return this.GetTable<PersonList>();
 			}
 		}
 	}
@@ -817,7 +831,7 @@ namespace Administrator.Data
 	}
 	
 	[Table(Name="dbo.image")]
-	public partial class image : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class Img : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -834,22 +848,22 @@ namespace Administrator.Data
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Onimage_idChanging(System.Guid value);
-    partial void Onimage_idChanged();
-    partial void OndataChanging(System.Data.Linq.Binary value);
-    partial void OndataChanged();
-    partial void OnnameChanging(string value);
-    partial void OnnameChanged();
+    partial void OnImageIDChanging(System.Guid value);
+    partial void OnImageIDChanged();
+    partial void OnDataChanging(System.Data.Linq.Binary value);
+    partial void OnDataChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
     #endregion
 		
-		public image()
+		public Img()
 		{
 			this._persons = new EntitySet<Person>(new Action<Person>(this.attach_persons), new Action<Person>(this.detach_persons));
 			OnCreated();
 		}
 		
-		[Column(Storage="_image_id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
-		public System.Guid image_id
+		[Column(Name="image_id", Storage="_image_id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid ImageID
 		{
 			get
 			{
@@ -859,17 +873,17 @@ namespace Administrator.Data
 			{
 				if ((this._image_id != value))
 				{
-					this.Onimage_idChanging(value);
+					this.OnImageIDChanging(value);
 					this.SendPropertyChanging();
 					this._image_id = value;
-					this.SendPropertyChanged("image_id");
-					this.Onimage_idChanged();
+					this.SendPropertyChanged("ImageID");
+					this.OnImageIDChanged();
 				}
 			}
 		}
 		
-		[Column(Storage="_data", DbType="Image NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary data
+		[Column(Name="data", Storage="_data", DbType="Image NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Data
 		{
 			get
 			{
@@ -879,17 +893,17 @@ namespace Administrator.Data
 			{
 				if ((this._data != value))
 				{
-					this.OndataChanging(value);
+					this.OnDataChanging(value);
 					this.SendPropertyChanging();
 					this._data = value;
-					this.SendPropertyChanged("data");
-					this.OndataChanged();
+					this.SendPropertyChanged("Data");
+					this.OnDataChanged();
 				}
 			}
 		}
 		
-		[Column(Storage="_name", DbType="NVarChar(50)")]
-		public string name
+		[Column(Name="name", Storage="_name", DbType="NVarChar(50)")]
+		public string Name
 		{
 			get
 			{
@@ -899,16 +913,16 @@ namespace Administrator.Data
 			{
 				if ((this._name != value))
 				{
-					this.OnnameChanging(value);
+					this.OnNameChanging(value);
 					this.SendPropertyChanging();
 					this._name = value;
-					this.SendPropertyChanged("name");
-					this.OnnameChanged();
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
 				}
 			}
 		}
 		
-		[Association(Name="image_Person", Storage="_persons", OtherKey="ImageID")]
+		[Association(Name="Img_Person", Storage="_persons", ThisKey="ImageID", OtherKey="ImageID")]
 		public EntitySet<Person> Persons
 		{
 			get
@@ -944,13 +958,13 @@ namespace Administrator.Data
 		private void attach_persons(Person entity)
 		{
 			this.SendPropertyChanging();
-			entity.image = this;
+			entity.Img = this;
 		}
 		
 		private void detach_persons(Person entity)
 		{
 			this.SendPropertyChanging();
-			entity.image = null;
+			entity.Img = null;
 		}
 	}
 	
@@ -984,6 +998,8 @@ namespace Administrator.Data
 		
 		private EntitySet<@event> _events;
 		
+		private EntitySet<PersonOrganizationRelation> _person_organizations;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1015,6 +1031,7 @@ namespace Administrator.Data
 		public Organization()
 		{
 			this._events = new EntitySet<@event>(new Action<@event>(this.attach_events), new Action<@event>(this.detach_events));
+			this._person_organizations = new EntitySet<PersonOrganizationRelation>(new Action<PersonOrganizationRelation>(this.attach_person_organizations), new Action<PersonOrganizationRelation>(this.detach_person_organizations));
 			OnCreated();
 		}
 		
@@ -1251,6 +1268,19 @@ namespace Administrator.Data
 			}
 		}
 		
+		[Association(Name="Organization_PersonOrganizationRelation", Storage="_person_organizations", ThisKey="OrganizationID", OtherKey="OrganizationID")]
+		public EntitySet<PersonOrganizationRelation> PersonOrganizationRelations
+		{
+			get
+			{
+				return this._person_organizations;
+			}
+			set
+			{
+				this._person_organizations.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1278,6 +1308,18 @@ namespace Administrator.Data
 		}
 		
 		private void detach_events(@event entity)
+		{
+			this.SendPropertyChanging();
+			entity.Organization = null;
+		}
+		
+		private void attach_person_organizations(PersonOrganizationRelation entity)
+		{
+			this.SendPropertyChanging();
+			entity.Organization = this;
+		}
+		
+		private void detach_person_organizations(PersonOrganizationRelation entity)
 		{
 			this.SendPropertyChanging();
 			entity.Organization = null;
@@ -1316,7 +1358,9 @@ namespace Administrator.Data
 		
 		private EntitySet<@event> _events1;
 		
-		private EntityRef<image> _image;
+		private EntitySet<PersonOrganizationRelation> _person_organizations;
+		
+		private EntityRef<Img> _image;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1350,7 +1394,8 @@ namespace Administrator.Data
 		{
 			this._events = new EntitySet<@event>(new Action<@event>(this.attach_events), new Action<@event>(this.detach_events));
 			this._events1 = new EntitySet<@event>(new Action<@event>(this.attach_events1), new Action<@event>(this.detach_events1));
-			this._image = default(EntityRef<image>);
+			this._person_organizations = new EntitySet<PersonOrganizationRelation>(new Action<PersonOrganizationRelation>(this.attach_person_organizations), new Action<PersonOrganizationRelation>(this.detach_person_organizations));
+			this._image = default(EntityRef<Img>);
 			OnCreated();
 		}
 		
@@ -1600,8 +1645,21 @@ namespace Administrator.Data
 			}
 		}
 		
-		[Association(Name="image_Person", Storage="_image", ThisKey="ImageID", IsForeignKey=true)]
-		public image image
+		[Association(Name="Person_PersonOrganizationRelation", Storage="_person_organizations", ThisKey="PersonID", OtherKey="PersonID")]
+		public EntitySet<PersonOrganizationRelation> PersonOrganizationRelations
+		{
+			get
+			{
+				return this._person_organizations;
+			}
+			set
+			{
+				this._person_organizations.Assign(value);
+			}
+		}
+		
+		[Association(Name="Img_Person", Storage="_image", ThisKey="ImageID", OtherKey="ImageID", IsForeignKey=true)]
+		public Img Img
 		{
 			get
 			{
@@ -1609,7 +1667,7 @@ namespace Administrator.Data
 			}
 			set
 			{
-				image previousValue = this._image.Entity;
+				Img previousValue = this._image.Entity;
 				if (((previousValue != value) 
 							|| (this._image.HasLoadedOrAssignedValue == false)))
 				{
@@ -1623,13 +1681,13 @@ namespace Administrator.Data
 					if ((value != null))
 					{
 						value.Persons.Add(this);
-						this._image_id = value.image_id;
+						this._image_id = value.ImageID;
 					}
 					else
 					{
 						this._image_id = default(Nullable<System.Guid>);
 					}
-					this.SendPropertyChanged("image");
+					this.SendPropertyChanged("Img");
 				}
 			}
 		}
@@ -1677,11 +1735,25 @@ namespace Administrator.Data
 			this.SendPropertyChanging();
 			entity.Person1 = null;
 		}
+		
+		private void attach_person_organizations(PersonOrganizationRelation entity)
+		{
+			this.SendPropertyChanging();
+			entity.Person = this;
+		}
+		
+		private void detach_person_organizations(PersonOrganizationRelation entity)
+		{
+			this.SendPropertyChanging();
+			entity.Person = null;
+		}
 	}
 	
 	[Table(Name="dbo.person_organization")]
-	public partial class PersonOrganizationRelation
+	public partial class PersonOrganizationRelation : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private System.Nullable<System.Guid> _person_id;
 		
@@ -1689,11 +1761,30 @@ namespace Administrator.Data
 		
 		private string _post;
 		
+		private EntityRef<Organization> _Organization;
+		
+		private EntityRef<Person> _person;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPersonIDChanging(System.Nullable<System.Guid> value);
+    partial void OnPersonIDChanged();
+    partial void OnOrganizationIDChanging(System.Nullable<System.Guid> value);
+    partial void OnOrganizationIDChanged();
+    partial void OnPostChanging(string value);
+    partial void OnPostChanged();
+    #endregion
+		
 		public PersonOrganizationRelation()
 		{
+			this._Organization = default(EntityRef<Organization>);
+			this._person = default(EntityRef<Person>);
+			OnCreated();
 		}
 		
-		[Column(Name="person_id", Storage="_person_id", DbType="UniqueIdentifier")]
+		[Column(Name="person_id", Storage="_person_id", DbType="UniqueIdentifier", IsPrimaryKey=true)]
 		public System.Nullable<System.Guid> PersonID
 		{
 			get
@@ -1704,12 +1795,16 @@ namespace Administrator.Data
 			{
 				if ((this._person_id != value))
 				{
+					this.OnPersonIDChanging(value);
+					this.SendPropertyChanging();
 					this._person_id = value;
+					this.SendPropertyChanged("PersonID");
+					this.OnPersonIDChanged();
 				}
 			}
 		}
 		
-		[Column(Name="organization_id", Storage="_organization_id", DbType="UniqueIdentifier")]
+		[Column(Name="organization_id", Storage="_organization_id", DbType="UniqueIdentifier", IsPrimaryKey=true)]
 		public System.Nullable<System.Guid> OrganizationID
 		{
 			get
@@ -1720,7 +1815,11 @@ namespace Administrator.Data
 			{
 				if ((this._organization_id != value))
 				{
+					this.OnOrganizationIDChanging(value);
+					this.SendPropertyChanging();
 					this._organization_id = value;
+					this.SendPropertyChanged("OrganizationID");
+					this.OnOrganizationIDChanged();
 				}
 			}
 		}
@@ -1736,8 +1835,100 @@ namespace Administrator.Data
 			{
 				if ((this._post != value))
 				{
+					this.OnPostChanging(value);
+					this.SendPropertyChanging();
 					this._post = value;
+					this.SendPropertyChanged("Post");
+					this.OnPostChanged();
 				}
+			}
+		}
+		
+		[Association(Name="Organization_PersonOrganizationRelation", Storage="_Organization", ThisKey="OrganizationID", OtherKey="OrganizationID", IsForeignKey=true)]
+		public Organization Organization
+		{
+			get
+			{
+				return this._Organization.Entity;
+			}
+			set
+			{
+				Organization previousValue = this._Organization.Entity;
+				if (((previousValue != value) 
+							|| (this._Organization.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Organization.Entity = null;
+						previousValue.PersonOrganizationRelations.Remove(this);
+					}
+					this._Organization.Entity = value;
+					if ((value != null))
+					{
+						value.PersonOrganizationRelations.Add(this);
+						this._organization_id = value.OrganizationID;
+					}
+					else
+					{
+						this._organization_id = default(Nullable<System.Guid>);
+					}
+					this.SendPropertyChanged("Organization");
+				}
+			}
+		}
+		
+		[Association(Name="Person_PersonOrganizationRelation", Storage="_person", ThisKey="PersonID", OtherKey="PersonID", IsForeignKey=true)]
+		public Person Person
+		{
+			get
+			{
+				return this._person.Entity;
+			}
+			set
+			{
+				Person previousValue = this._person.Entity;
+				if (((previousValue != value) 
+							|| (this._person.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._person.Entity = null;
+						previousValue.PersonOrganizationRelations.Remove(this);
+					}
+					this._person.Entity = value;
+					if ((value != null))
+					{
+						value.PersonOrganizationRelations.Add(this);
+						this._person_id = value.PersonID;
+					}
+					else
+					{
+						this._person_id = default(Nullable<System.Guid>);
+					}
+					this.SendPropertyChanged("Person");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -2782,6 +2973,404 @@ namespace Administrator.Data
 					this._Description = value;
 					this.SendPropertyChanged("Description");
 					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.vw_person_list")]
+	public partial class PersonList : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _PersonID;
+		
+		private System.Nullable<System.Guid> _ImageID;
+		
+		private string _FirstName;
+		
+		private string _LastName;
+		
+		private string _Surname;
+		
+		private string _Phone;
+		
+		private string _Mobile;
+		
+		private string _Email;
+		
+		private string _Icq;
+		
+		private bool _Sex;
+		
+		private string _Description;
+		
+		private byte[] _Photo;
+		
+		private System.Nullable<System.Guid> _OrganizationID;
+		
+		private string _Post;
+		
+		private string _OrganizationName;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPersonIDChanging(System.Guid value);
+    partial void OnPersonIDChanged();
+    partial void OnImageIDChanging(System.Nullable<System.Guid> value);
+    partial void OnImageIDChanged();
+    partial void OnFirstNameChanging(string value);
+    partial void OnFirstNameChanged();
+    partial void OnLastNameChanging(string value);
+    partial void OnLastNameChanged();
+    partial void OnSurnameChanging(string value);
+    partial void OnSurnameChanged();
+    partial void OnPhoneChanging(string value);
+    partial void OnPhoneChanged();
+    partial void OnMobileChanging(string value);
+    partial void OnMobileChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnIcqChanging(string value);
+    partial void OnIcqChanged();
+    partial void OnSexChanging(bool value);
+    partial void OnSexChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnImageChanging(byte[] value);
+    partial void OnImageChanged();
+    partial void OnOrganizationIDChanging(System.Nullable<System.Guid> value);
+    partial void OnOrganizationIDChanged();
+    partial void OnPostChanging(string value);
+    partial void OnPostChanged();
+    partial void OnOrganizationNameChanging(string value);
+    partial void OnOrganizationNameChanged();
+    #endregion
+		
+		public PersonList()
+		{
+			OnCreated();
+		}
+		
+		[Column(Name="person_id", Storage="_PersonID", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid PersonID
+		{
+			get
+			{
+				return this._PersonID;
+			}
+			set
+			{
+				if ((this._PersonID != value))
+				{
+					this.OnPersonIDChanging(value);
+					this.SendPropertyChanging();
+					this._PersonID = value;
+					this.SendPropertyChanged("PersonID");
+					this.OnPersonIDChanged();
+				}
+			}
+		}
+		
+		[Column(Name="image_id", Storage="_ImageID", DbType="UniqueIdentifier")]
+		public System.Nullable<System.Guid> ImageID
+		{
+			get
+			{
+				return this._ImageID;
+			}
+			set
+			{
+				if ((this._ImageID != value))
+				{
+					this.OnImageIDChanging(value);
+					this.SendPropertyChanging();
+					this._ImageID = value;
+					this.SendPropertyChanged("ImageID");
+					this.OnImageIDChanged();
+				}
+			}
+		}
+		
+		[Column(Name="first_name", Storage="_FirstName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string FirstName
+		{
+			get
+			{
+				return this._FirstName;
+			}
+			set
+			{
+				if ((this._FirstName != value))
+				{
+					this.OnFirstNameChanging(value);
+					this.SendPropertyChanging();
+					this._FirstName = value;
+					this.SendPropertyChanged("FirstName");
+					this.OnFirstNameChanged();
+				}
+			}
+		}
+		
+		[Column(Name="last_name", Storage="_LastName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string LastName
+		{
+			get
+			{
+				return this._LastName;
+			}
+			set
+			{
+				if ((this._LastName != value))
+				{
+					this.OnLastNameChanging(value);
+					this.SendPropertyChanging();
+					this._LastName = value;
+					this.SendPropertyChanged("LastName");
+					this.OnLastNameChanged();
+				}
+			}
+		}
+		
+		[Column(Name="surname", Storage="_Surname", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Surname
+		{
+			get
+			{
+				return this._Surname;
+			}
+			set
+			{
+				if ((this._Surname != value))
+				{
+					this.OnSurnameChanging(value);
+					this.SendPropertyChanging();
+					this._Surname = value;
+					this.SendPropertyChanged("Surname");
+					this.OnSurnameChanged();
+				}
+			}
+		}
+		
+		[Column(Name="phone", Storage="_Phone", DbType="NVarChar(50)")]
+		public string Phone
+		{
+			get
+			{
+				return this._Phone;
+			}
+			set
+			{
+				if ((this._Phone != value))
+				{
+					this.OnPhoneChanging(value);
+					this.SendPropertyChanging();
+					this._Phone = value;
+					this.SendPropertyChanged("Phone");
+					this.OnPhoneChanged();
+				}
+			}
+		}
+		
+		[Column(Name="mobile", Storage="_Mobile", DbType="NVarChar(50)")]
+		public string Mobile
+		{
+			get
+			{
+				return this._Mobile;
+			}
+			set
+			{
+				if ((this._Mobile != value))
+				{
+					this.OnMobileChanging(value);
+					this.SendPropertyChanging();
+					this._Mobile = value;
+					this.SendPropertyChanged("Mobile");
+					this.OnMobileChanged();
+				}
+			}
+		}
+		
+		[Column(Name="email", Storage="_Email", DbType="NVarChar(50)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[Column(Name="icq", Storage="_Icq", DbType="NVarChar(20)")]
+		public string Icq
+		{
+			get
+			{
+				return this._Icq;
+			}
+			set
+			{
+				if ((this._Icq != value))
+				{
+					this.OnIcqChanging(value);
+					this.SendPropertyChanging();
+					this._Icq = value;
+					this.SendPropertyChanged("Icq");
+					this.OnIcqChanged();
+				}
+			}
+		}
+		
+		[Column(Name="sex", Storage="_Sex", DbType="Bit NOT NULL")]
+		public bool Sex
+		{
+			get
+			{
+				return this._Sex;
+			}
+			set
+			{
+				if ((this._Sex != value))
+				{
+					this.OnSexChanging(value);
+					this.SendPropertyChanging();
+					this._Sex = value;
+					this.SendPropertyChanged("Sex");
+					this.OnSexChanged();
+				}
+			}
+		}
+		
+		[Column(Name="description", Storage="_Description", DbType="NVarChar(MAX)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[Column(Name="photo", Storage="_Photo", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public byte[] Image
+		{
+			get
+			{
+				return this._Photo;
+			}
+			set
+			{
+				if ((this._Photo != value))
+				{
+					this.OnImageChanging(value);
+					this.SendPropertyChanging();
+					this._Photo = value;
+					this.SendPropertyChanged("Image");
+					this.OnImageChanged();
+				}
+			}
+		}
+		
+		[Column(Name="organization_id", Storage="_OrganizationID", DbType="UniqueIdentifier")]
+		public System.Nullable<System.Guid> OrganizationID
+		{
+			get
+			{
+				return this._OrganizationID;
+			}
+			set
+			{
+				if ((this._OrganizationID != value))
+				{
+					this.OnOrganizationIDChanging(value);
+					this.SendPropertyChanging();
+					this._OrganizationID = value;
+					this.SendPropertyChanged("OrganizationID");
+					this.OnOrganizationIDChanged();
+				}
+			}
+		}
+		
+		[Column(Name="post", Storage="_Post", DbType="NVarChar(50)")]
+		public string Post
+		{
+			get
+			{
+				return this._Post;
+			}
+			set
+			{
+				if ((this._Post != value))
+				{
+					this.OnPostChanging(value);
+					this.SendPropertyChanging();
+					this._Post = value;
+					this.SendPropertyChanged("Post");
+					this.OnPostChanged();
+				}
+			}
+		}
+		
+		[Column(Name="organization_name", Storage="_OrganizationName", DbType="NVarChar(250)")]
+		public string OrganizationName
+		{
+			get
+			{
+				return this._OrganizationName;
+			}
+			set
+			{
+				if ((this._OrganizationName != value))
+				{
+					this.OnOrganizationNameChanging(value);
+					this.SendPropertyChanging();
+					this._OrganizationName = value;
+					this.SendPropertyChanged("OrganizationName");
+					this.OnOrganizationNameChanged();
 				}
 			}
 		}

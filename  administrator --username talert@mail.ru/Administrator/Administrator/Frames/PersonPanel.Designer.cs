@@ -41,7 +41,7 @@ namespace Administrator.Frames
             this.personListControl.Name = "personListControl";
             this.personListControl.Size = new System.Drawing.Size(683, 415);
             this.personListControl.TabIndex = 0;
-            this.personListControl.PersonUpdated += new PersonUpdatedDelegete(this.personListControl_PersonAdded);
+            this.personListControl.PersonUpdated += new PersonUpdatedDelegete(this.personListControl_PersonUpdateed);
             // 
             // PersonPanel
             // 

@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
-using Administrator.Objects;
+using Administrator.Data;
 
 namespace Administrator.Frames
 {
@@ -11,7 +12,7 @@ namespace Administrator.Frames
             InitializeComponent();
         }
 
-        public Person Person
+        public PersonList Person
         {
             get {  return personDetailsControl.Person; }
             set {  personDetailsControl.Person = value; }
@@ -29,7 +30,7 @@ namespace Administrator.Frames
         private void PersonDetailsFrame_Shown(object sender, EventArgs e)
         {
             personDetailsControl.OrganizationListDataSource = Program.CurrentDataContext.AllOrganizations;
-            personDetailsControl.PostListDataSource = Document.GetPosts();
+            personDetailsControl.PostListDataSource = Program.CurrentDataContext.Posts();
         }
     }
 }
