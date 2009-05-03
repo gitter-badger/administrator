@@ -90,4 +90,7 @@ Global
 		{C13062E5-8828-4ACA-8DC1-8716ACC3F42B} = {2F0D8DFB-F4FE-4ED9-82AE-E82FD3F52FFA}
 		{0555BE94-D4E7-4C12-9A91-C9D2644A982B} = {2F0D8DFB-F4FE-4ED9-82AE-E82FD3F52FFA}
 	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VisualSVNWorkingCopyRoot = ..
+	EndGlobalSection
 EndGlobal
