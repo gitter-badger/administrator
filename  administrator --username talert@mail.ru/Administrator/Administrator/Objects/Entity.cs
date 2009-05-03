@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using DevExpress.XtraTreeList.Columns;
-using DevExpress.XtraTreeList.Nodes;
 
+
+///Note: Need remove this class and all inherited classes
 namespace Administrator.Objects
 {
     public interface IEntity
