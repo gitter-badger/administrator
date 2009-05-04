@@ -85,6 +85,7 @@ namespace tAlert.DbVersion
 
                                 foreach (string s in querryParts)
                                 {
+                                    log.DebugFormat("Version {0} script {1}", version, s);
                                     command.CommandText = s;
                                     command.ExecuteNonQuery();
                                 }
