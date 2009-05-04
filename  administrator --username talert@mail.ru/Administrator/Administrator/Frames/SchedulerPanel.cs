@@ -63,9 +63,9 @@ namespace Administrator.Frames
             e.DataSource = Program.CurrentDataContext.AllOrganizations;
         }
 
-        private void ShedulerControl_AllPersonsTableNeeded(object sender, EventArgsReferences.DataSourceNeededEventArgs e)
+        private void ShedulerControl_AllPersonsSourceNeeded(object sender, EventArgsReferences.DataSourceNeededEventArgs e)
         {
-            e.DataSource = Document.AllPersons;
+            e.DataSource = Program.CurrentDataContext.AllPersons;
         }
     }
 }

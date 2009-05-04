@@ -15,6 +15,11 @@ namespace Administrator.Data
             get { return Organizations; }
         }
 
+        public IQueryable AllPersons
+        {
+            get { return PersonLists; }
+        }
+
         public IQueryable GetOrganizationQuerry()
         {
             return GetSamleProxyQuery(OrganizationLists);

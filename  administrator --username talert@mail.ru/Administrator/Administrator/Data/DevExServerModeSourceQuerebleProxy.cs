@@ -3,23 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using log4net;
 
 namespace NearDupe.Data
 {
     public class DevExServerModeSourceQuerebleProxy : IQueryable, IQueryProvider
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof (DevExServerModeSourceQuerebleProxy));
+
         public event EntityQueriedEntityHandler EntityQueried;
 
         public DevExServerModeSourceQuerebleProxy(IQueryable querry)
         {
-            this.query = querry;
+            query = querry;
             rootElementType = querry.ElementType;
         }
 
         private DevExServerModeSourceQuerebleProxy(IQueryable querry, EntityQueriedEntityHandler handler, Type elementType)
             : this(querry)
         {
-            this.rootElementType = elementType;
+            rootElementType = elementType;
             EntityQueried += handler;
         }
 
@@ -95,7 +98,16 @@ namespace NearDupe.Data
 
         object IQueryProvider.Execute(Expression expression)
         {
-            return query.Provider.Execute(expression);
+            try
+            {
+                return query.Provider.Execute(expression);
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex);
+                throw;
+            }
+            
         }
 
         #endregion

@@ -35,7 +35,6 @@ namespace Administrator
 
         public void UpdateDocument()
         {
-            UpdatePersonList();
             UpdateServiceTreeList();
             UpdateEventList();
             UpdateAppointments();
@@ -58,67 +57,6 @@ END
                 addParameter(command, "@dbName", name);
                 command.ExecuteNonQuery();
             }
-        }
-
-        public Guid UpdatePerson(Person person)
-        {
-            if (person == null || person.PersonId == Guid.Empty) return Guid.Empty;
-
-            using (IDbConnection connection = CreateConnection())
-            {
-                IDbCommand command = connection.CreateCommand();
-
-                #region sqlStatement
-
-                command.CommandText = @"
-IF EXISTS(SELECT TOP 1 * FROM [dbo].[person] WHERE [person_id] = @person_id)
-BEGIN
-    UPDATE [dbo].[person]
-       SET [first_name] = @first_name
-          ,[last_name] = @last_name
-          ,[surname] = @surname
-          ,[phone] = @phone
-          ,[mobile] = @mobile
-          ,[email] = @email
-          ,[icq] = @icq
-          ,[sex] = @sex
-          ,[description] = @description
-    WHERE [person_id] =  @person_id
-END
-ELSE
-    BEGIN
-    INSERT INTO [dbo].[person]
-               ([person_id] ,[first_name] ,[last_name]  ,[surname]  
-               ,[phone]     ,[mobile]     ,[email]      ,[icq]      ,[sex]
-               ,[description])
-         VALUES
-               (@person_id  ,@first_name  ,@last_name   ,@surname   
-               ,@phone      ,@mobile      ,@email       ,@icq       ,@sex
-               ,@description)
-    END
-";
-                #endregion
-
-                addParameter(command, "@person_id", person.PersonId);
-                addParameter(command, "@first_name", person.FirstName);
-                addParameter(command, "@last_name", person.LastName);
-                addParameter(command, "@surname", person.Surname);
-                addParameter(command, "@phone", person.Phone);
-                addParameter(command, "@mobile", person.Mobile);
-                addParameter(command, "@email", person.Email);
-                addParameter(command, "@icq", person.Isq);
-                addParameter(command, "@sex", person.Sex);
-                addParameter(command, "@description", person.Description);
-
-                command.ExecuteNonQuery();
-            }
-
-            UpdatePersonOrganizationRelation(person.PersonId, person.OrganizationId, person.Post);
-
-            SetPhotoForPerson(person.PersonId, person.Photo, "photo");
-
-            return person.PersonId;
-
         }
 
         public void UpdateEvent(Event ev)
@@ -225,50 +163,6 @@ DELETE FROM [dbo].[service_event]
                     command.ExecuteNonQuery();
                     transaction.Commit();
                 }
-            }
-        }
-
-        public Guid SetPhotoForPerson(Guid personId, Image photo, string name)
-        {
-            if (photo == null || personId == Guid.Empty) return Guid.Empty;
-
-            using (IDbConnection connection = CreateConnection())
-            {
-                IDbCommand command = connection.CreateCommand();
-                command.CommandText = @"
-DECLARE @image_id uniqueidentifier 
-
-SELECT @image_id = [image_id] FROM [dbo].[person] WHERE [person_id] = @person_id
-
-IF (EXISTS(SELECT TOP 1 * FROM [dbo].[image] WHERE [image_id] = @image_id)) 
-UPDATE [dbo].[image]
-   SET [image_id] = @image_id  ,[data] = @data  ,[name] = @name
-WHERE [image_id] = @image_id
-ELSE
-BEGIN
-    SET @image_id = newId()
-
-    INSERT INTO [dbo].[image]
-		       ([image_id]   ,[data]    ,[name])
-         VALUES
-               (@image_id    ,@data     ,@name )
-    
-    UPDATE [dbo].[person]
-    SET [image_id] = @image_id 
-    WHERE [person_id] = @person_id;
-
-
-    SELECT @image_id as [image_id]
-END
-                ";
-
-
-
-                addParameter(command, "@person_id", personId);
-                addParameter(command, "@data", Utils.ImgToBytes(photo));
-                addParameter(command, "@name", name);
-
-                return (Guid)(command.ExecuteScalar() ?? Guid.Empty);
             }
         }
 
@@ -421,29 +315,6 @@ DELETE FROM [dbo].[service_event] WHERE [service_event_id] = @appId
             }
         }
 
-        public Object[] GetPosts()
-        {
-            List<Object> result = new List<object>();
-
-            using (IDbConnection connection = CreateConnection())
-            {
-                IDbCommand command = connection.CreateCommand();
-                command.CommandText = @"
-SELECT DISTINCT [post] FROM [person_organization] ORDER BY [post] ASC
-                ";
-
-                using (IDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        result.Add(reader["post"]);
-                    }
-                }
-            }
-
-            return result.ToArray();
-        }
-
         public List<Guid> GetServiceIdForEvent(Guid evintId)
         {
             List<Guid> result = new List<Guid>();
@@ -471,7 +342,7 @@ WHERE [e].[event_id] = @event_id
             return result;
         }
 
-        protected DataTable this[string tableName]
+        private DataTable this[string tableName]
         {
             get
             {
@@ -489,11 +360,6 @@ WHERE [e].[event_id] = @event_id
             }
         }
 
-        public DataTable AllPersons
-        {
-            get { return this[Person.TableName]; }
-        }
-
         public DataTable AllServices
         {
             get { return this[ServiceTree.TableName]; }
@@ -507,42 +373,6 @@ WHERE [e].[event_id] = @event_id
         public DataTable AllAppintments
         {
             get { return this[EventServiceRelation.TableName]; }
-        }
-
-        public void UpdatePersonList()
-        {
-            using (IDbConnection connection = CreateConnection())
-            {
-                IDbCommand command = connection.CreateCommand();
-                command.CommandText = @"
-SELECT p.*, i.[data] as [photo], po.[organization_id], po.[post], o.[name] as [organization_name],
-        p.surname + ' ' +  p.first_name + ' ' + p.last_name AS [SFL]
-FROM [person] as p
-LEFT OUTER JOIN [image] AS i ON i.[image_id] = p.[image_id]
-LEFT OUTER JOIN [dbo].[person_organization] AS po ON po.[person_id] = p.[person_id]
-LEFT OUTER JOIN [dbo].[organization] AS o ON o.[organization_id] = po.[organization_id]
-                ";
-
-                SqlDataAdapter adapter = new SqlDataAdapter(command as SqlCommand);
-
-                DataTable table = this[Person.TableName];
-
-                adapter.FillSchema(table, SchemaType.Source);
-                adapter.Fill(table);
-                if (!table.Columns.Contains("image"))
-                {
-                    table.Columns.Add("image", typeof(Image));
-                }
-                foreach (DataRow row in table.Rows)
-                {
-                    if (row["photo"] != DBNull.Value)
-                    {
-                        row["image"] = Utils.BytesToImg((byte[])row["photo"]);
-                        continue;
-                    }
-                    row["image"] = ((bool)row["sex"]) ? Properties.Resources.businessman2 : Properties.Resources.woman4;
-                }
-            }
         }
 
         public void UpdateServiceTreeList()
@@ -615,41 +445,6 @@ INNER JOIN [dbo].[event] as [e] ON [e].[event_id] = [se].[event_id]
         }
 
         #region private methods
-
-        private void UpdatePersonOrganizationRelation(Guid personId, Guid organizationId, string post)
-        {
-            using (IDbConnection connection = CreateConnection())
-            {
-                IDbCommand command = connection.CreateCommand();
-                command.CommandText = @"
-DELETE FROM [person_organization] WHERE person_id = @person_id
-
-INSERT INTO [dbo].[person_organization]
-           ([person_id]
-           ,[organization_id]
-           ,[post])
-     VALUES
-           (@person_id
-           ,@organization_id
-           ,@post)
-                ";
-
-                addParameter(command, "@person_id", personId);
-                if (organizationId == Guid.Empty)
-                {
-                    addParameter(command, "@organization_id", null);
-                }
-                else
-                {
-                    addParameter(command, "@organization_id", organizationId);
-                }
-
-                addParameter(command, "@post", post);
-
-                command.ExecuteNonQuery();
-            }
-
-        }
 
         private void UpdateData(DataTable table)
         {

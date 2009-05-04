@@ -10,7 +10,6 @@ using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid.Views.Base;
-using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using log4net;
 
@@ -23,7 +22,7 @@ namespace Administrator.Controls
         public event EventUpdatedEventHandler EventUpdated;
         public event CurrentEventChangedEventHandler CurrentEventChanged;
         public event EventCloseEventHandler EventClosed;
-        public event DataSourceNeededEventHandler AllPersonsTableNeeded;
+        public event DataSourceNeededEventHandler AllPersonsSourceNeeded;
         public event DataSourceNeededEventHandler AllOrganizationsSourceNeeded;
 
         public EventListControl()
@@ -88,13 +87,13 @@ namespace Administrator.Controls
             if (EventClosed != null) EventClosed(this, e);
         }
 
-        protected object OnAllPersonsTableNeeded(DataSourceNeededEventArgs e)
+        private object OnAllPersonsSourceNeeded(DataSourceNeededEventArgs e)
         {
-            if (AllPersonsTableNeeded != null) AllPersonsTableNeeded(this, e);
+            if (AllPersonsSourceNeeded != null) AllPersonsSourceNeeded(this, e);
             return e.DataSource;
         }
 
-        protected object OnAllOrganizationsListNeeded(DataSourceNeededEventArgs e)
+        private object OnAllOrganizationsListNeeded(DataSourceNeededEventArgs e)
         {
             if (AllOrganizationsSourceNeeded != null) AllOrganizationsSourceNeeded(this, e);
             return e.DataSource;
@@ -136,7 +135,7 @@ namespace Administrator.Controls
             using (var form = new EventClosedDetailsFrame())
             {
                 form.Event = CurrentEvent;
-                form.PersonsDataSource = OnAllPersonsTableNeeded(new DataSourceNeededEventArgs(null));
+                form.PersonsDataSource = OnAllPersonsSourceNeeded(new DataSourceNeededEventArgs(null));
                 form.OrganizationsDataSource = OnAllOrganizationsListNeeded(new DataSourceNeededEventArgs(null));
 
                 if (form.ShowDialog() == DialogResult.OK)
@@ -155,7 +154,7 @@ namespace Administrator.Controls
                     form.Event = CurrentEvent;
                 }
 
-                form.PersonsDataSource = OnAllPersonsTableNeeded(new DataSourceNeededEventArgs(null));
+                form.PersonsDataSource = OnAllPersonsSourceNeeded(new DataSourceNeededEventArgs(null));
                 form.OrganizationsDataSource = OnAllOrganizationsListNeeded(new DataSourceNeededEventArgs(null));
 
                 if (form.ShowDialog() == DialogResult.OK)

@@ -24,8 +24,8 @@ namespace Administrator.Controls
         public event AppointmentChangedEventHandler AppintmentModified;
         public event ServiceIdsForEventsNeededEventHandler ServiceIdsNeededForEvent;
         public event EventCloseEventHandler EventClosed;
-        public event DataSourceNeededEventHandler AllPersonsTableNeeded;
-        public event DataSourceNeededEventHandler AllOrganizationsTableNeeded;
+        public event DataSourceNeededEventHandler AllPersonsSouurceNeeded;
+        public event DataSourceNeededEventHandler AllOrganizationsSourceNeeded;
 
         private int suspendLayout;
 
@@ -128,15 +128,15 @@ namespace Administrator.Controls
             if (EventClosed != null) EventClosed(this, e);
         }
 
-        protected object OnAllPersonsTableNeeded(DataSourceNeededEventArgs e)
+        protected object OnAllPersonsSourceNeeded(DataSourceNeededEventArgs e)
         {
-            if (AllPersonsTableNeeded != null) AllPersonsTableNeeded(this, e);
+            if (AllPersonsSouurceNeeded != null) AllPersonsSouurceNeeded(this, e);
             return e.DataSource;
         }
 
         protected object OnAllOrganizationsSourceNeeded(DataSourceNeededEventArgs e)
         {
-            if (AllOrganizationsTableNeeded != null) AllOrganizationsTableNeeded(this, e);
+            if (AllOrganizationsSourceNeeded != null) AllOrganizationsSourceNeeded(this, e);
             return e.DataSource;
         }
 
@@ -453,9 +453,9 @@ namespace Administrator.Controls
         {
             e.DataSource = OnAllOrganizationsSourceNeeded(new DataSourceNeededEventArgs(e.DataSource));
         }
-        private void EventList_AllPersonsTableNeeded(object sender, DataSourceNeededEventArgs e)
+        private void EventList_AllPersonsSourceNeeded(object sender, DataSourceNeededEventArgs e)
         {
-            e.DataSource = OnAllPersonsTableNeeded(new DataSourceNeededEventArgs(e.DataSource));
+            e.DataSource = OnAllPersonsSourceNeeded(new DataSourceNeededEventArgs(e.DataSource));
         }
         #endregion
      }

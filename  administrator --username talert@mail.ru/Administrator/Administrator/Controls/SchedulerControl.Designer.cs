@@ -299,7 +299,7 @@
             this.EventList.TabIndex = 0;
             this.EventList.CurrentEventChanged += new Administrator.Controls.CurrentEventChangedEventHandler(this.EventList_CurrentEventChanged);
             this.EventList.AllOrganizationsSourceNeeded += new Administrator.EventArgsReferences.DataSourceNeededEventHandler(this.EventList_AllOrganizationsTableNeeded);
-            this.EventList.AllPersonsTableNeeded += new Administrator.EventArgsReferences.DataSourceNeededEventHandler(this.EventList_AllPersonsTableNeeded);
+            this.EventList.AllPersonsSourceNeeded += new Administrator.EventArgsReferences.DataSourceNeededEventHandler(this.EventList_AllPersonsSourceNeeded);
             this.EventList.EventClosed += new Administrator.Controls.EventCloseEventHandler(this.EventList_EventClosed);
             this.EventList.EventUpdated += new Administrator.Controls.EventUpdatedEventHandler(this.EventList_EventUpdated);
             // 

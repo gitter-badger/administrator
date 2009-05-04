@@ -50,8 +50,8 @@ namespace Administrator.Frames
             this.ShedulerControl.AppintmentDelated += new Administrator.Controls.AppointmentChangedEventHandler(this.ShedulerControl_AppintmentDelated);
             this.ShedulerControl.EventUpdated += new Administrator.Controls.EventUpdatedEventHandler(this.ShedulerControl_EventUpdated);
             this.ShedulerControl.ServiceIdsNeededForEvent += new Administrator.Controls.ServiceIdsForEventsNeededEventHandler(this.ShedulerControl_ServiceIdsNeededForEvent);
-            this.ShedulerControl.AllPersonsTableNeeded += new Administrator.EventArgsReferences.DataSourceNeededEventHandler(this.ShedulerControl_AllPersonsTableNeeded);
-            this.ShedulerControl.AllOrganizationsTableNeeded += new Administrator.EventArgsReferences.DataSourceNeededEventHandler(this.ShedulerControl_AllOrganizationsSourceNeeded);
+            this.ShedulerControl.AllPersonsSouurceNeeded += new Administrator.EventArgsReferences.DataSourceNeededEventHandler(this.ShedulerControl_AllPersonsSourceNeeded);
+            this.ShedulerControl.AllOrganizationsSourceNeeded += new Administrator.EventArgsReferences.DataSourceNeededEventHandler(this.ShedulerControl_AllOrganizationsSourceNeeded);
             this.ShedulerControl.EventClosed += new Administrator.Controls.EventCloseEventHandler(this.ShedulerControl_EventClosed);
             this.ShedulerControl.AppintmentModified += new Administrator.Controls.AppointmentChangedEventHandler(this.ShedulerControl_AppintmentModified);
             this.ShedulerControl.ServiceUpdated += new Administrator.Controls.ServiceUpdatedEvintHandler(this.ShedulerControl_ServiceUpdated);

@@ -11,11 +11,9 @@ using tAlert.DbVersion.Statements;
 
 namespace tAlert.DbVersion
 {
-    
-
     public class MsSqlVersionController : IVersionController
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof (MsSqlVersionController));
+        private static readonly ILog log = LogManager.GetLogger(typeof(MsSqlVersionController));
 
         #region ctors
 
@@ -24,7 +22,7 @@ namespace tAlert.DbVersion
             this.connectionString = connectionString;
             if (!CheckConnection()) return;
 
-       }
+        }
 
         public void Initialize()
         {
@@ -32,7 +30,7 @@ namespace tAlert.DbVersion
             LoadScripts();
             scriptVersion = GetScriptVersion();
 
-            log.InfoFormat("Current DB version is [{0}], actual DB version is [{1}]",dbVersion,scriptVersion);
+            log.InfoFormat("Current DB version is [{0}], actual DB version is [{1}]", dbVersion, scriptVersion);
         }
 
         #endregion
@@ -61,63 +59,64 @@ namespace tAlert.DbVersion
                 return true;
             }
 
-            log.InfoFormat("Start update DB to [{0}]",scriptVersion);
+            log.InfoFormat("Start update DB to [{0}]", scriptVersion);
 
-            using (IDbConnection connection = new SqlConnection(connectionString))
+            foreach (Version version in versions)
             {
-                IDbCommand command = connection.CreateCommand();
+                if (version.IsLatestVersion(finalVersion)) return true;
 
-                connection.Open();
-                foreach (Version version in versions)
+                if (!version.IsLatestVersion(dbVersion)) continue;
+
+                try
                 {
-                    if (version.IsLatestVersion(finalVersion)) return true;
-
-                    if (!version.IsLatestVersion(dbVersion)) continue;
-                    
-                    using (IDbTransaction transaction = connection.BeginTransaction())
+                    using (SqlConnection connection = new SqlConnection(connectionString))
                     {
-                        command.Transaction = transaction;
-                        try
+                        connection.Open();
+                        using (SqlTransaction transaction = connection.BeginTransaction())
                         {
-                            if (!String.IsNullOrEmpty(version.Script))
+                            using (SqlCommand command = connection.CreateCommand())
                             {
-                                var querryParts = SplitWithGo(version.Script);
+                                command.Transaction = transaction;
 
-                                foreach (string s in querryParts)
+                                if (!String.IsNullOrEmpty(version.Script))
                                 {
-                                    log.DebugFormat("Version {0} script {1}", version, s);
-                                    command.CommandText = s;
-                                    command.ExecuteNonQuery();
-                                }
+                                    var querryParts = SplitWithGo(version.Script);
 
-                                command.CommandText = MsSql.UpdateDbVersion;
-                                command.Parameters.Clear();
-                                addParameter(command, "@dbversion", version.ToString());
-                                command.ExecuteNonQuery();
-                                transaction.Commit();
+                                    foreach (string s in querryParts)
+                                    {
+                                        log.DebugFormat("Version [{0}] script \r[{1}]", version, s);
+                                        command.CommandText = s;
+                                        command.ExecuteNonQuery();
+                                    }
+
+                                    command.CommandText = MsSql.UpdateDbVersion;
+                                    command.Parameters.Clear();
+                                    addParameter(command, "@dbversion", version.ToString());
+                                    command.ExecuteNonQuery();
+                                    transaction.Commit();
+                                }
                             }
                         }
-                        catch (Exception ex)
-                        {
-                            log.Error("Update DB is faled",ex);
-                            transaction.Rollback();
-                            return false;
-                        }
-
-                        log.InfoFormat("DB is successfully updated to [{0}]", version.ToString());
                     }
                 }
-                return true;
+                catch (Exception ex)
+                {
+                    log.Error("Update DB is faled", ex);
+                    return false;
+                }
+
+                log.InfoFormat("DB is successfully updated to [{0}]", version.ToString());
             }
+            return true;
         }
 
         #region private members
 
         private List<string> SplitWithGo(string querry)
         {
-            var badCnars = new List<char> {' ', '\r','\n'};
+            var badCnars = new List<char> { ' ', '\r', '\n' };
 
-            var splited = querry.Split(new[] { "\nGO\r", "\ngo\r", "\nGo\r" }, StringSplitOptions.RemoveEmptyEntries);
+            var splited = querry.Split(new[] { "GO" }, StringSplitOptions.RemoveEmptyEntries);
 
             var result = new List<string>();
 
@@ -125,7 +124,7 @@ namespace tAlert.DbVersion
             {
                 foreach (var c in str)
                 {
-                    if(!badCnars.Contains(c))
+                    if (!badCnars.Contains(c))
                     {
                         result.Add(str);
                         break;
@@ -176,13 +175,13 @@ namespace tAlert.DbVersion
                         Thread.Sleep(1000);
                         tryCount--;
                     }
-                } 
+                }
 
                 using (IDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return new Version((String) reader["version"]);
+                        return new Version((String)reader["version"]);
                     }
                 }
             }

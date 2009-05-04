@@ -57,7 +57,6 @@ namespace Administrator.Frames
             Document.AllServices.Rows.Clear();
             Document.AllAppintments.Rows.Clear();
             Document.AllEvents.Rows.Clear();
-            Document.AllPersons.Rows.Clear();
             Document.ConnectionString = Settings.Default.ConnectionString;
             Document.UpdateDocument();
         }

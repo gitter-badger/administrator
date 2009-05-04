@@ -89,7 +89,6 @@
     <EmbeddedResource Include="MsSql\1.0.0.1.sql" />
     <EmbeddedResource Include="MsSql\1.0.0.3.sql" />
     <EmbeddedResource Include="MsSql\1.0.0.4.sql" />
-    <EmbeddedResource Include="MsSql\1.0.1.5.sql" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -111,6 +110,8 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MsSql\1.0.0.2.sql" />
+    <EmbeddedResource Include="MsSql\1.0.0.5.sql" />
+    <EmbeddedResource Include="MsSql\1.0.1.6.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

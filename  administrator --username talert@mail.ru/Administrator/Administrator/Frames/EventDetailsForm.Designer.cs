@@ -46,12 +46,12 @@
             this.SaveButton = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.EventOrganization = new DevExpress.XtraEditors.LookUpEdit();
-            this.EventManager = new DevExpress.XtraEditors.LookUpEdit();
-            this.EventContactPerson = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.ErrorProvider = new Administrator.Controls.CustomErrorProvider(this.components);
+            this.EventManager = new DevExpress.XtraEditors.LookUpEdit();
+            this.EventContactPerson = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ExitDateEdit.Properties.VistaTimeProperties)).BeginInit();
@@ -67,9 +67,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EventOrganization.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventManager.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventContactPerson.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
@@ -254,9 +254,9 @@
             // 
             this.groupControl3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupControl3.Controls.Add(this.EventOrganization);
             this.groupControl3.Controls.Add(this.EventManager);
             this.groupControl3.Controls.Add(this.EventContactPerson);
+            this.groupControl3.Controls.Add(this.EventOrganization);
             this.groupControl3.Controls.Add(this.labelControl7);
             this.groupControl3.Controls.Add(this.labelControl6);
             this.groupControl3.Controls.Add(this.labelControl5);
@@ -285,46 +285,6 @@
             this.ErrorProvider.SetRequired(this.EventOrganization, false);
             this.EventOrganization.Size = new System.Drawing.Size(327, 20);
             this.EventOrganization.TabIndex = 0;
-            // 
-            // EventManager
-            // 
-            this.EventManager.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.EventManager.Location = new System.Drawing.Point(120, 75);
-            this.EventManager.Name = "EventManager";
-            this.EventManager.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
-            this.EventManager.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.EventManager.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("SFL", "Ф.И.О", 20, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.Ascending),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("organization_name", "Организация"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("person_id", "personId", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default)});
-            this.EventManager.Properties.DisplayMember = "SFL";
-            this.EventManager.Properties.NullText = "";
-            this.EventManager.Properties.ValueMember = "person_id";
-            this.ErrorProvider.SetRequired(this.EventManager, false);
-            this.EventManager.Size = new System.Drawing.Size(327, 20);
-            this.EventManager.TabIndex = 2;
-            // 
-            // EventContactPerson
-            // 
-            this.EventContactPerson.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.EventContactPerson.Location = new System.Drawing.Point(120, 49);
-            this.EventContactPerson.Name = "EventContactPerson";
-            this.EventContactPerson.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
-            this.EventContactPerson.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.EventContactPerson.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("SFL", "Ф.И.О", 20, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.Ascending),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("organization_name", "Организация"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("person_id", "personId", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default)});
-            this.EventContactPerson.Properties.DisplayMember = "SFL";
-            this.EventContactPerson.Properties.NullText = "";
-            this.EventContactPerson.Properties.ValueMember = "person_id";
-            this.ErrorProvider.SetRequired(this.EventContactPerson, false);
-            this.EventContactPerson.Size = new System.Drawing.Size(327, 20);
-            this.EventContactPerson.TabIndex = 1;
             // 
             // labelControl7
             // 
@@ -355,6 +315,46 @@
             this.ErrorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.ErrorProvider.ContainerControl = this;
             this.ErrorProvider.IgnoreOnCancel = true;
+            // 
+            // EventManager
+            // 
+            this.EventManager.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.EventManager.Location = new System.Drawing.Point(120, 75);
+            this.EventManager.Name = "EventManager";
+            this.EventManager.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
+            this.EventManager.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.EventManager.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("FullName", "Ф.И.О", 20, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.Ascending),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("OrganizationName", "Организация"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("PersonID", "personId", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default)});
+            this.EventManager.Properties.DisplayMember = "FullName";
+            this.EventManager.Properties.NullText = "";
+            this.EventManager.Properties.ValueMember = "PersonID";
+            this.ErrorProvider.SetRequired(this.EventManager, false);
+            this.EventManager.Size = new System.Drawing.Size(327, 20);
+            this.EventManager.TabIndex = 6;
+            // 
+            // EventContactPerson
+            // 
+            this.EventContactPerson.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.EventContactPerson.Location = new System.Drawing.Point(121, 49);
+            this.EventContactPerson.Name = "EventContactPerson";
+            this.EventContactPerson.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
+            this.EventContactPerson.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.EventContactPerson.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("FullName", "Ф.И.О", 20, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.Ascending),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("OrganizationName", "Организация"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("PersonID", "personId", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default)});
+            this.EventContactPerson.Properties.DisplayMember = "FullName";
+            this.EventContactPerson.Properties.NullText = "";
+            this.EventContactPerson.Properties.ValueMember = "PersonID";
+            this.ErrorProvider.SetRequired(this.EventContactPerson, false);
+            this.EventContactPerson.Size = new System.Drawing.Size(327, 20);
+            this.EventContactPerson.TabIndex = 5;
             // 
             // EventDetailsForm
             // 
@@ -392,9 +392,9 @@
             this.groupControl3.ResumeLayout(false);
             this.groupControl3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EventOrganization.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventManager.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventContactPerson.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -417,12 +417,12 @@
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private Controls.CustomErrorProvider ErrorProvider;
-        private DevExpress.XtraEditors.LookUpEdit EventContactPerson;
         private DevExpress.XtraEditors.LookUpEdit EventOrganization;
-        private DevExpress.XtraEditors.LookUpEdit EventManager;
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.DateEdit RegistrationDateEdit;
         private DevExpress.XtraEditors.DateEdit ExitDateEdit;
+        private DevExpress.XtraEditors.LookUpEdit EventManager;
+        private DevExpress.XtraEditors.LookUpEdit EventContactPerson;
     }
 }
