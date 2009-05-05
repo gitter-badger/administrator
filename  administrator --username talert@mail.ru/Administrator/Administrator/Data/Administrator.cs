@@ -151,6 +151,16 @@ namespace Administrator.Data
                 .ToArray();
         }
 
+        public Organization GetOrganizationByName(string name, string shortName)
+        {
+            return
+                Organizations.Where(
+                    org =>
+                    org.Name.ToLower().Equals(name.ToLower()) ||
+                    org.ShortName.ToLower().Equals(shortName.ToLower())).Take(1).
+                    SingleOrDefault();
+        }
+
         public override void SubmitChanges(ConflictMode failureMode)
         {
             try

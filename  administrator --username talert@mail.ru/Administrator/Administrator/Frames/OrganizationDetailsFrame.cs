@@ -33,5 +33,12 @@ namespace Administrator.Frames
         {
             organizationDetailsControl.ScopeOfActitvityList = Program.CurrentDataContext.ScopesOfActivity();
         }
+
+        private void organizationDetailsControl_OrganizationExistanceCheckNeeded(object sender, OrganizationExistanceCheckNeededEventArgs e)
+        {
+            var org = Program.CurrentDataContext.GetOrganizationByName(e.Organization.Name, e.Organization.ShortName);
+
+            e.Exists = org != null;
+        }
     }
 }

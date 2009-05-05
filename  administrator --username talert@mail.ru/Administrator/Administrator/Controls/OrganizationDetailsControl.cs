@@ -1,7 +1,6 @@
 ﻿using System;
 using Administrator.Data;
-using Administrator.Frames;
-using Administrator.Objects;
+using Administrator.EventArgsReferences;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 
@@ -9,6 +8,8 @@ namespace Administrator.Controls
 {
     public partial class OrganizationDetailsControl : XtraUserControl
     {
+        public event OrganizationExistanceCheckNeededEventHandler OrganizationExistanceCheckNeeded;
+
         private OrganizationList organization;
 
         public OrganizationDetailsControl()
@@ -33,6 +34,12 @@ namespace Administrator.Controls
                 organization = value;
                 SetOganizationInfo();
             }
+        }
+
+        private void OnOrganizationExistanceCheckNeeded(OrganizationExistanceCheckNeededEventArgs e)
+        {
+            OrganizationExistanceCheckNeededEventHandler needed = OrganizationExistanceCheckNeeded;
+            if (needed != null) needed(this, e);
         }
 
         private void GetOrganizationInfo()
@@ -75,6 +82,22 @@ namespace Administrator.Controls
             ErrorProvider.SetError(shortNameEdit, shortNameError ? "Необходимо ввести короткое название организации" : null, true);
 
             e.Cancel = fullNameError || shortNameError;
+
+            if (!e.Cancel)
+            {
+                var existanceCheck =
+                    new OrganizationExistanceCheckNeededEventArgs(new Organization
+                                                                      {
+                                                                          Name = fullNameEdit.EditValue as string,
+                                                                          ShortName = shortNameEdit.EditValue as string
+                                                                      });
+                OnOrganizationExistanceCheckNeeded(existanceCheck);
+
+                ErrorProvider.SetError(fullNameEdit, existanceCheck.Exists ? "Организация с таким или похожим именем уже существует." : null, true);
+                ErrorProvider.SetError(shortNameEdit, existanceCheck.Exists ? "Организация с таким или похожим именем уже существует." : null, true);
+
+                e.Cancel = existanceCheck.Exists;
+            }
         }
 
         #region addresses sinchronization

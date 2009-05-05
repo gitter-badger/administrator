@@ -65,6 +65,7 @@
             this.organizationDetailsControl.Name = "organizationDetailsControl";
             this.organizationDetailsControl.Size = new System.Drawing.Size(399, 482);
             this.organizationDetailsControl.TabIndex = 0;
+            this.organizationDetailsControl.OrganizationExistanceCheckNeeded += new Administrator.EventArgsReferences.OrganizationExistanceCheckNeededEventHandler(this.organizationDetailsControl_OrganizationExistanceCheckNeeded);
             // 
             // OrganizationDetailsFrame
             // 

@@ -199,6 +199,7 @@
     <Compile Include="EventArgsReferences\DataTableNeededEventArgs.cs" />
     <Compile Include="EventArgsReferences\MovedToBlackListEventArgs.cs" />
     <Compile Include="EventArgsReferences\OrganizationActivityScoupeNeedet.cs" />
+    <Compile Include="EventArgsReferences\OrganizationExistanceCheckNeeded.cs" />
     <Compile Include="Frames\CustomAppointmentForm.cs">
       <SubType>Form</SubType>
     </Compile>
