@@ -81,17 +81,5 @@ namespace Administrator.Objects
             get { return GetValue<Image>("image"); }
             set { SetValue("image", value); }
         }
-
-        public Guid ImageId
-        {
-            get { return GetValue<Guid>("image_id"); }
-            set { SetValue("image_id", value); }
-        }
-
-        public String Description
-        {
-            get { return GetValue<String>("description"); }
-            set { SetValue("description", value); }
-        }
     }
 }
