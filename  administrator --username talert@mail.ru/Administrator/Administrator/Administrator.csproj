@@ -304,7 +304,6 @@
     <Compile Include="Objects\Entity.cs" />
     <Compile Include="Objects\Event.cs" />
     <Compile Include="Objects\EventServiceRelation.cs" />
-    <Compile Include="Objects\Person.cs" />
     <Compile Include="Objects\Service.cs" />
     <Compile Include="Objects\ServiceTree.cs" />
     <Compile Include="Objects\ServiceType.cs" />
