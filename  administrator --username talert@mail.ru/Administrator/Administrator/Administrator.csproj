@@ -196,7 +196,7 @@
     <Compile Include="Data\DevExServerModeSourceQuerebleProxy.cs" />
     <Compile Include="Data\PersonList.cs" />
     <Compile Include="Document.cs" />
-    <Compile Include="EventArgsReferences\DataTableNeededEventArgs.cs" />
+    <Compile Include="EventArgsReferences\DataSourceNeededEventArgs.cs" />
     <Compile Include="EventArgsReferences\MovedToBlackListEventArgs.cs" />
     <Compile Include="EventArgsReferences\OrganizationActivityScoupeNeedet.cs" />
     <Compile Include="EventArgsReferences\OrganizationExistanceCheckNeeded.cs" />
