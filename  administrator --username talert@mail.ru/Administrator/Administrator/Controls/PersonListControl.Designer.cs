@@ -58,6 +58,7 @@
             this.newPersonBatton = new DevExpress.XtraBars.BarButtonItem();
             this.editPersonBatton = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -65,7 +66,6 @@
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.addPerson = new DevExpress.XtraBars.BarButtonItem();
             this.images = new DevExpress.Utils.ImageCollection(this.components);
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.personGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LinqSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainView)).BeginInit();
@@ -94,12 +94,12 @@
             // MainView
             // 
             this.MainView.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
+            this.gridBand3,
             this.gridBand2,
             this.gridBand1,
             this.gridBand4,
             this.gridBand5,
-            this.gridBand6,
-            this.gridBand3});
+            this.gridBand6});
             this.MainView.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
             this.columnPersonId,
             this.columnFirstName,
@@ -345,8 +345,11 @@
             // gridBand3
             // 
             this.gridBand3.Caption = "unvisible";
+            this.gridBand3.Columns.Add(this.columnImageId);
+            this.gridBand3.Columns.Add(this.columnPersonId);
             this.gridBand3.MinWidth = 20;
             this.gridBand3.Name = "gridBand3";
+            this.gridBand3.RowCount = 2;
             this.gridBand3.Visible = false;
             this.gridBand3.Width = 114;
             // 
@@ -359,6 +362,8 @@
             this.columnPersonId.OptionsColumn.AllowFocus = false;
             this.columnPersonId.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
             this.columnPersonId.OptionsColumn.ReadOnly = true;
+            this.columnPersonId.RowIndex = 1;
+            this.columnPersonId.Visible = true;
             this.columnPersonId.Width = 114;
             // 
             // columnImageId
@@ -366,6 +371,7 @@
             this.columnImageId.Caption = "image_id";
             this.columnImageId.FieldName = "ImageID";
             this.columnImageId.Name = "columnImageId";
+            this.columnImageId.Visible = true;
             // 
             // barManager
             // 
@@ -429,6 +435,14 @@
             this.barButtonItem3.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "В чёрный список";
+            this.barButtonItem1.Glyph = global::Administrator.Properties.Resources.sad_face_24;
+            this.barButtonItem1.Id = 5;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            // 
             // barSubItem1
             // 
             this.barSubItem1.Caption = "Сотрудники";
@@ -445,14 +459,6 @@
             // images
             // 
             this.images.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("images.ImageStream")));
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "В чёрный список";
-            this.barButtonItem1.Glyph = global::Administrator.Properties.Resources.sad_face_24;
-            this.barButtonItem1.Id = 5;
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // PersonListControl
             // 

@@ -62,6 +62,7 @@
             this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.descriptionColumn = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.descriptionMemoExEdit = new DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit();
+            this.BandUnvisible = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.organizationGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LinqSource)).BeginInit();
@@ -152,7 +153,8 @@
             this.gridBand1,
             this.gridBand2,
             this.gridBand3,
-            this.gridBand4});
+            this.gridBand4,
+            this.BandUnvisible});
             this.MainView.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
             this.organizationIdColumn,
             this.nameColumn,
@@ -201,7 +203,6 @@
             this.gridBand1.Columns.Add(this.scopeOfActivityColumn);
             this.gridBand1.Columns.Add(this.directorNameColumn);
             this.gridBand1.Columns.Add(this.blackListColumn);
-            this.gridBand1.Columns.Add(this.organizationIdColumn);
             this.gridBand1.MinWidth = 20;
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.Width = 179;
@@ -260,7 +261,7 @@
             this.organizationIdColumn.OptionsColumn.AllowEdit = false;
             this.organizationIdColumn.OptionsColumn.AllowFocus = false;
             this.organizationIdColumn.OptionsColumn.ReadOnly = true;
-            this.organizationIdColumn.RowIndex = 4;
+            this.organizationIdColumn.Visible = true;
             // 
             // gridBand2
             // 
@@ -398,6 +399,14 @@
             this.descriptionMemoExEdit.Name = "descriptionMemoExEdit";
             this.descriptionMemoExEdit.ReadOnly = true;
             // 
+            // BandUnvisible
+            // 
+            this.BandUnvisible.Caption = "Unvisible";
+            this.BandUnvisible.Columns.Add(this.organizationIdColumn);
+            this.BandUnvisible.Name = "BandUnvisible";
+            this.BandUnvisible.Visible = false;
+            this.BandUnvisible.Width = 75;
+            // 
             // OrganizationListControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -452,5 +461,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn finishedColumn;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn blackListColumn;
         private DevExpress.XtraBars.BarButtonItem menuBlackList;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand BandUnvisible;
     }
 }

@@ -45,13 +45,9 @@ namespace Administrator.Controls
             set { LinqSource.QueryableSource = value; }
         }
 
-        public void FocusRow(Guid organizationId)
+        public void FocusRow(string shortName)
         {
-        //    var lsmFrontEnd = (LinqServerModeFrontEnd)MainView.DataSource;
-
-        //    var index = lsmFrontEnd.GetRowIndexByKey(organizationId);
-
-        //    MainView.FocusedRowHandle = index;
+            MainView.FocusedRowHandle = MainView.LocateByValue(0, shortNameColumn, shortName);
         }
 
         public void ReloadData()
@@ -100,7 +96,7 @@ namespace Administrator.Controls
                     if (isNewOrganization)
                     {
                         LinqSource.Reload();
-                        FocusRow(form.Organization.OrganizationID);
+                        FocusRow(form.Organization.ShortName);
                     }
                     else
                     {

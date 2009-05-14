@@ -27,21 +27,7 @@ namespace Administrator.Controls
 
         public void FocusRow(Guid personId)
         {
-            //int handle = -1;
-
-            //for (int i = 0; i < MainView.RowCount; i++)
-            //{
-            //    if ((Guid)MainView.GetRowCellValue(i, "person_id") == personId)
-            //    {
-            //        handle = i;
-            //        break;
-            //    }
-            //}
-
-            //if (handle != -1)
-            //{
-            //    MainView.FocusedRowHandle = handle;
-            //}
+            MainView.FocusedRowHandle = MainView.LocateByValue(0, columnPersonId, personId);
         }
 
         public PersonList CurrentPerson
