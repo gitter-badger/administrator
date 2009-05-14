@@ -161,6 +161,13 @@ namespace Administrator.Data
                     SingleOrDefault();
         }
 
+        public Person GetPersonByName(string firstName, string surName)
+        {
+            return
+                Persons.Where(
+                    p => p.FirstName.ToLower() == firstName.ToLower() && p.Surname.ToLower() == surName.ToLower()).Take(1).SingleOrDefault();
+        }
+
         public override void SubmitChanges(ConflictMode failureMode)
         {
             try

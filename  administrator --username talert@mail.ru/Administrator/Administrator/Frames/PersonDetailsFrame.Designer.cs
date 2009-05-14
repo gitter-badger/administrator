@@ -36,10 +36,10 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.Image = global::Administrator.Properties.Resources.delete_16_16;
-            this.cancelButton.Location = new System.Drawing.Point(312, 498);
+            this.cancelButton.Location = new System.Drawing.Point(12, 498);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(88, 23);
             this.cancelButton.TabIndex = 2;
@@ -49,7 +49,7 @@
             // 
             this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.saveButton.Image = global::Administrator.Properties.Resources.check_16_16;
-            this.saveButton.Location = new System.Drawing.Point(218, 498);
+            this.saveButton.Location = new System.Drawing.Point(312, 498);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(88, 23);
             this.saveButton.TabIndex = 1;
@@ -65,6 +65,7 @@
             this.personDetailsControl.Name = "personDetailsControl";
             this.personDetailsControl.Size = new System.Drawing.Size(390, 480);
             this.personDetailsControl.TabIndex = 0;
+            this.personDetailsControl.PersonExistanceCheckNeeded += new System.EventHandler<Administrator.EventArgsReferences.PersonExistanceCheckNededEventArgs>(this.personDetailsControl_PersonExistanceCheckNeeded);
             // 
             // PersonDetailsFrame
             // 

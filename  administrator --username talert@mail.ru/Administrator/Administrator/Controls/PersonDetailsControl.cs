@@ -1,11 +1,14 @@
 ﻿using System;
 using Administrator.Data;
+using Administrator.EventArgsReferences;
 using DevExpress.XtraEditors;
 
 namespace Administrator.Controls
 {
     public partial class PersonDetailsControl : XtraUserControl
     {
+        public event EventHandler<PersonExistanceCheckNededEventArgs> PersonExistanceCheckNeeded;
+
         private PersonList person;
 
         private bool isPhotoSet;
@@ -91,6 +94,12 @@ namespace Administrator.Controls
             postComboEdit.EditValue = person.Post;
         }
 
+        private void OnPersonExistanceCheckNeeded(PersonExistanceCheckNededEventArgs e)
+        {
+            EventHandler<PersonExistanceCheckNededEventArgs> needed = PersonExistanceCheckNeeded;
+            if (needed != null) needed(this, e);
+        }
+
         private void PersonDetailsControl_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             bool firstNameError = String.IsNullOrEmpty(firstNameEdit.EditValue as string);
@@ -103,6 +112,22 @@ namespace Administrator.Controls
 
 
             e.Cancel = firstNameError | lastNameError | surnameNameError;
+
+            if (e.Cancel) return;
+
+            var existanceCheck =new PersonExistanceCheckNededEventArgs(
+                new Person
+                    {
+                        FirstName = firstNameEdit.EditValue as string,
+                        Surname = surNameEdit.EditValue as string
+                    });
+                
+            OnPersonExistanceCheckNeeded(existanceCheck);
+
+            ErrorProvider.SetError(firstNameEdit, existanceCheck.Exists ? "Человек с таким именем уже существует." : null, true);
+            ErrorProvider.SetError(surNameEdit, existanceCheck.Exists ? "Человек с такой фамилией уже существует." : null, true);
+
+            e.Cancel = existanceCheck.Exists;
         }
 
         private void sexComboEdit_EditValueChanged(object sender, EventArgs e)

@@ -200,6 +200,7 @@
     <Compile Include="EventArgsReferences\MovedToBlackListEventArgs.cs" />
     <Compile Include="EventArgsReferences\OrganizationActivityScoupeNeedet.cs" />
     <Compile Include="EventArgsReferences\OrganizationExistanceCheckNeeded.cs" />
+    <Compile Include="EventArgsReferences\PersonExistanceCheckNededEventArgs.cs" />
     <Compile Include="Frames\CustomAppointmentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -302,6 +303,7 @@
     <Compile Include="Frames\ServiceDetailsForm.Designer.cs">
       <DependentUpon>ServiceDetailsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Notification.cs" />
     <Compile Include="Objects\Entity.cs" />
     <Compile Include="Objects\Event.cs" />
     <Compile Include="Objects\EventServiceRelation.cs" />

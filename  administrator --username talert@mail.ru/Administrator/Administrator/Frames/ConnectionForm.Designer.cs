@@ -37,9 +37,10 @@
             // 
             // cancelButton
             // 
+            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.Image = global::Administrator.Properties.Resources.delete_16_16;
-            this.cancelButton.Location = new System.Drawing.Point(293, 272);
+            this.cancelButton.Location = new System.Drawing.Point(12, 272);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 3;
@@ -47,8 +48,9 @@
             // 
             // saveButton
             // 
+            this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.saveButton.Image = global::Administrator.Properties.Resources.check_16_16;
-            this.saveButton.Location = new System.Drawing.Point(199, 272);
+            this.saveButton.Location = new System.Drawing.Point(280, 272);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(88, 23);
             this.saveButton.TabIndex = 2;
@@ -66,8 +68,9 @@
             // 
             // testButton
             // 
+            this.testButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.testButton.Image = global::Administrator.Properties.Resources.database_on_16_16;
-            this.testButton.Location = new System.Drawing.Point(12, 272);
+            this.testButton.Location = new System.Drawing.Point(183, 272);
             this.testButton.Name = "testButton";
             this.testButton.Size = new System.Drawing.Size(91, 23);
             this.testButton.TabIndex = 1;

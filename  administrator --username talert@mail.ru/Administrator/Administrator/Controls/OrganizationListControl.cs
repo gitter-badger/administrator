@@ -80,6 +80,8 @@ namespace Administrator.Controls
         {
             using (var form = new OrganizationDetailsFrame())
             {
+                form.IsNewOrganization = isNewOrganization;
+
                 if (!isNewOrganization)
                 {
                     form.Organization = CurrentOrganization;

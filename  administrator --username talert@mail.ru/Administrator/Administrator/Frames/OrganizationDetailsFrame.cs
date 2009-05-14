@@ -21,6 +21,8 @@ namespace Administrator.Frames
             set { organizationDetailsControl.Organization = value; }
         }
 
+        public bool IsNewOrganization { get; set; }
+
         private void saveButton_Click(object sender, EventArgs e)
         {
             if (!ValidateChildren()) return;
@@ -36,6 +38,8 @@ namespace Administrator.Frames
 
         private void organizationDetailsControl_OrganizationExistanceCheckNeeded(object sender, OrganizationExistanceCheckNeededEventArgs e)
         {
+            if(!IsNewOrganization) return;
+
             var org = Program.CurrentDataContext.GetOrganizationByName(e.Organization.Name, e.Organization.ShortName);
 
             e.Exists = org != null;

@@ -57,6 +57,8 @@ namespace Administrator.Controls
         {
             using (var form = new PersonDetailsFrame())
             {
+                form.IsNewPerson = isNewPerson; 
+
                 if (isNewPerson)
                 {
                     form.Person = new PersonList { PersonID = Guid.NewGuid() };

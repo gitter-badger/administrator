@@ -150,10 +150,10 @@
             // 
             // CuncelButton
             // 
-            this.CuncelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CuncelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CuncelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.CuncelButton.Image = global::Administrator.Properties.Resources.delete_16_16;
-            this.CuncelButton.Location = new System.Drawing.Point(264, 238);
+            this.CuncelButton.Location = new System.Drawing.Point(12, 238);
             this.CuncelButton.Name = "CuncelButton";
             this.CuncelButton.Size = new System.Drawing.Size(75, 23);
             this.CuncelButton.TabIndex = 3;
@@ -163,7 +163,7 @@
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.Image = global::Administrator.Properties.Resources.check_16_16;
-            this.OkButton.Location = new System.Drawing.Point(173, 238);
+            this.OkButton.Location = new System.Drawing.Point(254, 238);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(85, 23);
             this.OkButton.TabIndex = 2;

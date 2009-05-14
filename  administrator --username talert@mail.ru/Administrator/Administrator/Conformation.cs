@@ -7,7 +7,7 @@ namespace Administrator
     {
         public static bool PersonDelation   
         {
-            get { return ShowConformationFrame("Подтверждение", "Вы уверены, что хотите удалить этого сотрудника?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes; }
+            get { return ShowConformationFrame("Подтверждение", "Вы уверены, что хотите удалить этого сотрудника?", MessageBoxButtons.YesNo, MessageBoxIcon.Question,null) == DialogResult.Yes; }
         }
 
         public static bool ResetConnection
@@ -16,7 +16,7 @@ namespace Administrator
                 return
                     ShowConformationFrame("Ошибка",
                                           "Не удалось насторить подключение к базе данных. Хотите попробовать ещё раз?",
-                                          MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.OK; }
+                                          MessageBoxButtons.YesNo, MessageBoxIcon.Question,null) == DialogResult.OK; }
         }
 
         public static bool RestoreFromBlackList
@@ -25,36 +25,20 @@ namespace Administrator
             {
                 return ShowConformationFrame("Подтверждение",
                                              "Вы уверены что хотите восстановить мз \"чёрного\" списка?",
-                                             MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+                                             MessageBoxButtons.YesNo, MessageBoxIcon.Question,null) == DialogResult.Yes;
             }
         }
 
-        private static DialogResult ShowConformationFrame(string caption, string text, MessageBoxButtons buttons, MessageBoxIcon icon)
+        public static bool PersonAdding(string firstName, string surName, IWin32Window owner)
         {
-            return XtraMessageBox.Show(text, caption, buttons, icon);
-        }
-    }
-
-    public static class Notification
-    {
-
-        public static void CantEstablishConnection()
-        {
-            ShowNotificationFrame("Критическая ошибка",
-                                  "Невозможно установить соединение или обновить базу данных. Приложение будет закрыто.",
-                                  MessageBoxIcon.Stop);
+            return ShowConformationFrame("Подтверждение",
+                                             string.Format("{0} {1} уже занесён в базу данных. Вы уверены что хотите продолжить?", firstName,surName),
+                                             MessageBoxButtons.YesNo, MessageBoxIcon.Question,owner) == DialogResult.Yes;
         }
 
-        public static void NeedEnterBlackListReason()
+        private static DialogResult ShowConformationFrame(string caption, string text, MessageBoxButtons buttons, MessageBoxIcon icon,IWin32Window owner)
         {
-            ShowNotificationFrame("Внимание",
-                                  "Необходимо ввести причину занесения в \"чёрный\" список.",
-                                  MessageBoxIcon.Warning);
-        }
-
-        private static void ShowNotificationFrame(string caption, string text, MessageBoxIcon icon)
-        {
-            XtraMessageBox.Show(text, caption, MessageBoxButtons.OK, icon);
+            return XtraMessageBox.Show(owner,text, caption, buttons, icon);
         }
     }
 }

@@ -41,12 +41,12 @@
             // 
             // CancelButton
             // 
-            this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.CancelButton.Image = global::Administrator.Properties.Resources.delete_16_16;
-            this.CancelButton.Location = new System.Drawing.Point(296, 447);
+            this.CancelButton.Location = new System.Drawing.Point(13, 447);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
+            this.CancelButton.Size = new System.Drawing.Size(80, 23);
             this.CancelButton.TabIndex = 4;
             this.CancelButton.Text = "Отмена";
             // 
@@ -72,9 +72,9 @@
             // 
             // ClouseButton
             // 
-            this.ClouseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ClouseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ClouseButton.Image = global::Administrator.Properties.Resources.check_16_16;
-            this.ClouseButton.Location = new System.Drawing.Point(95, 447);
+            this.ClouseButton.Location = new System.Drawing.Point(296, 447);
             this.ClouseButton.Name = "ClouseButton";
             this.ClouseButton.Size = new System.Drawing.Size(75, 23);
             this.ClouseButton.TabIndex = 3;
@@ -83,9 +83,9 @@
             // 
             // RefuseButton
             // 
-            this.RefuseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.RefuseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.RefuseButton.Image = global::Administrator.Properties.Resources.nav_down_red_16_16;
-            this.RefuseButton.Location = new System.Drawing.Point(13, 447);
+            this.RefuseButton.Location = new System.Drawing.Point(215, 447);
             this.RefuseButton.Name = "RefuseButton";
             this.RefuseButton.Size = new System.Drawing.Size(75, 23);
             this.RefuseButton.TabIndex = 2;
@@ -122,11 +122,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(383, 482);
+            this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.BalanceControl);
             this.Controls.Add(this.groupControl3);
             this.Controls.Add(this.ClouseButton);
             this.Controls.Add(this.RefuseButton);
-            this.Controls.Add(this.CancelButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
