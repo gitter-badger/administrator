@@ -34,7 +34,10 @@ namespace Administrator.Controls
 
         public object OrganizationListDataSource
         {
-            set { organizationLookUpEdit.Properties.DataSource = value; }
+            set
+            {
+                organizationLookUpEdit.Properties.DataSource = value;   
+            }
         }
 
         public Object[] PostListDataSource

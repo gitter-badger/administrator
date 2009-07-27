@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using Administrator.Objects;
+using Administrator.Properties;
 using Administrator.References;
-using ALProjects.Core.Config;
 
 namespace Administrator
 {

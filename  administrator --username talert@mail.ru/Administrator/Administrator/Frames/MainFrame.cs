@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Administrator.Properties;
 using Administrator.References;
-using ALProjects.Core.Config;
 using DevExpress.XtraTabbedMdi;
 
 namespace Administrator.Frames

@@ -85,6 +85,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Карточка сотрудника";
             this.Shown += new System.EventHandler(this.PersonDetailsFrame_Shown);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PersonDetailsFrame_FormClosed);
             this.ResumeLayout(false);
 
         }

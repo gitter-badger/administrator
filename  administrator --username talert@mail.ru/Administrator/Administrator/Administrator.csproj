@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{DDB05270-69E5-4124-9BAD-44635A346D32}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -13,6 +13,21 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ApplicationIcon>Resources\address_book2.ico</ApplicationIcon>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,6 +37,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -447,42 +463,6 @@
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ALProjects\ALProjects.Common.AppState\ALProjects.Common.AppState.csproj">
-      <Project>{5552989A-6E6F-497D-95FD-A87B7D123916}</Project>
-      <Name>ALProjects.Common.AppState</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ALProjects\ALProjects.Common.Modules\ALProjects.Core.Modules.csproj">
-      <Project>{312C8699-0C8C-4D27-84B9-0F07F1F02982}</Project>
-      <Name>ALProjects.Core.Modules</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ALProjects\ALProjects.Core.Config\ALProjects.Core.Config.csproj">
-      <Project>{64ABA125-745B-46C3-A764-8EE7AFEEFAA1}</Project>
-      <Name>ALProjects.Core.Config</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ALProjects\ALProjects.Core.Utilites\ALProjects.Core.Utilites.csproj">
-      <Project>{FEF36460-65ED-42A0-8F1B-EF3B447C1E9B}</Project>
-      <Name>ALProjects.Core.Utilites</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ALProjects\ALProjects.Core\ALProjects.Core.csproj">
-      <Project>{31949282-4C93-4992-8F47-422A6692D537}</Project>
-      <Name>ALProjects.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ALProjects\ALProjects.Data.BusinessAccessLevel\ALProjects.Data.BusinessAccessLevel.csproj">
-      <Project>{91EB2AEE-5B3A-4160-AFB2-3B39AFCE61E2}</Project>
-      <Name>ALProjects.Data.BusinessAccessLevel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ALProjects\ALProjects.Data.Common\ALProjects.Data.Common.csproj">
-      <Project>{481C25C3-F8DB-40D0-8DE0-5D7A2107A645}</Project>
-      <Name>ALProjects.Data.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ALProjects\ALProjects.Data.DataAccessLevel\ALProjects.Data.DataAccessLevel.csproj">
-      <Project>{C13062E5-8828-4ACA-8DC1-8716ACC3F42B}</Project>
-      <Name>ALProjects.Data.DataAccessLevel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ALProjects\ALProjects.Security\ALProjects.Security.csproj">
-      <Project>{0555BE94-D4E7-4C12-9A91-C9D2644A982B}</Project>
-      <Name>ALProjects.Security</Name>
-    </ProjectReference>
     <ProjectReference Include="..\tAlert.DbVersion\tAlert.DbVersion.csproj">
       <Project>{B25DEA53-E49C-440D-B467-18A685371D18}</Project>
       <Name>tAlert.DbVersion</Name>
@@ -534,6 +514,38 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

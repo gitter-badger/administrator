@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data.Linq;
+using System.Linq;
 using System.Windows.Forms;
 using Administrator.Data;
 using Administrator.EventArgsReferences;
@@ -31,7 +33,7 @@ namespace Administrator.Frames
 
         private void PersonDetailsFrame_Shown(object sender, EventArgs e)
         {
-            personDetailsControl.OrganizationListDataSource = Program.CurrentDataContext.AllOrganizations;
+            personDetailsControl.OrganizationListDataSource = ((IQueryable<Organization>)Program.CurrentDataContext.AllOrganizations).Distinct();
             personDetailsControl.PostListDataSource = Program.CurrentDataContext.Posts();
         }
 
@@ -51,6 +53,11 @@ namespace Administrator.Frames
                 DialogResult = DialogResult.OK;
                 Close();
             }
+        }
+
+        private void PersonDetailsFrame_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            personDetailsControl.PersonExistanceCheckNeeded -= personDetailsControl_PersonExistanceCheckNeeded;
         }
     }
 }
