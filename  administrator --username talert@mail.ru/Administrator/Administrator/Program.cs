@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Reflection;
 using System.Windows.Forms;
 using Administrator.Data;
 using Administrator.Frames;
@@ -27,13 +28,15 @@ namespace Administrator
         [STAThread]
         static void Main()
         {
+            XmlConfigurator.Configure();
+            log.Info(Assembly.GetExecutingAssembly().FullName);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.ThreadException += Application_ThreadException;
 
-            if (!initialize())
+            if (!Initialize())
             {
                 log.Info("Application wasn't initialized and will be close.");
                 Notification.CantEstablishConnection();
@@ -47,14 +50,12 @@ namespace Administrator
 
         }
 
-        private static bool initialize()
+        private static bool Initialize()
         {
             DevExpress.Skins.SkinManager.EnableFormSkins();
             DevExpress.UserSkins.BonusSkins.Register();
             DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "Blue";
             //DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "Xmas 2008 Blue";
-
-            XmlConfigurator.Configure();
 
             switch(SetUpConnection(false))
             {
@@ -74,7 +75,7 @@ namespace Administrator
             bool sqlConnectionChanged = false;
             try
             {
-                #region initialize db connection
+                #region Initialize db connection
 
                 if (ifExistsSetUpAnyway || !Utils.CheckConnection(Settings.Default.ConnectionString))
                 {
