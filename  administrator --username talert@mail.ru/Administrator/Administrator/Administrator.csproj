@@ -460,6 +460,7 @@
     <Compile Include="References\PlaceReference.cs" />
     <Compile Include="References\PlaceTypes.cs" />
     <Compile Include="References\ReferenceBase.cs" />
+    <Compile Include="Properties\Settings.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>

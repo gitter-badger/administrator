@@ -57,6 +57,8 @@ namespace Administrator
             DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "Blue";
             //DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "Xmas 2008 Blue";
 
+            Settings.Default.Upgrade();
+
             switch(SetUpConnection(false))
             {
                 case ConnectionSetUpStates.Established:
