@@ -41,6 +41,8 @@ namespace Administrator
                 log.Info("Application wasn't initialized and will be close.");
                 Notification.CantEstablishConnection();
                 return;
+
+
             }
 
             // SecurityFacade.Instance.Login("test", "test");

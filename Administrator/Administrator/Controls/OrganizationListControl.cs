@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using Administrator.Data;
 using Administrator.EventArgsReferences;
 using Administrator.Frames;
-using Administrator.References;
-using DevExpress.Data.Linq.Helpers;
 using DevExpress.XtraEditors;
-using DevExpress.XtraGrid.Views.Base;
-using DevExpress.XtraGrid.Views.Grid.ViewInfo;
-using DevExpress.XtraScheduler;
 using log4net;
 
 namespace Administrator.Controls
