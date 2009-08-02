@@ -16,8 +16,8 @@ namespace Administrator.Frames
         public Event Event { get; set; }
 
         public Object PersonsDataSource { get; set; }
-        public Object OrganizationsDataSource { get; set; }
 
+        public Object OrganizationsDataSource { get; set; }
 
         private void GetDataFromForm()
         {
@@ -70,8 +70,6 @@ namespace Administrator.Frames
             
             SetFormData();
        }
-
-
 
         private void SaveButton_Click(object sender, EventArgs e)
         {

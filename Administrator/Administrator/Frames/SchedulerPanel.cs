@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using Administrator.Controls;
+using Administrator.Data;
 using Administrator.References;
 
 namespace Administrator.Frames
@@ -60,12 +62,12 @@ namespace Administrator.Frames
 
         private void ShedulerControl_AllOrganizationsSourceNeeded(object sender, EventArgsReferences.DataSourceNeededEventArgs e)
         {
-            e.DataSource = Program.CurrentDataContext.AllOrganizations;
+            e.DataSource = ((IQueryable<Organization>)Program.CurrentDataContext.AllOrganizations).Distinct();
         }
 
         private void ShedulerControl_AllPersonsSourceNeeded(object sender, EventArgsReferences.DataSourceNeededEventArgs e)
         {
-            e.DataSource = Program.CurrentDataContext.AllPersons;
+            e.DataSource = ((IQueryable<PersonList>)Program.CurrentDataContext.AllPersons).Distinct();
         }
     }
 }

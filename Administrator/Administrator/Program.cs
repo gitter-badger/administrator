@@ -20,8 +20,6 @@ namespace Administrator
 
         public static event EventHandler ConnectionStringChanged;
 
-
-
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
