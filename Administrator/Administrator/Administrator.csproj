@@ -142,61 +142,51 @@
       <DependentUpon>CustomErrorProvider.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\EventListControl.cs">
-      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\EventListControl.Designer.cs">
       <DependentUpon>EventListControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\OrganizationDetailsControl.cs">
-      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\OrganizationDetailsControl.Designer.cs">
       <DependentUpon>OrganizationDetailsControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\OrganizationListControl.cs">
-      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\OrganizationListControl.Designer.cs">
       <DependentUpon>OrganizationListControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\PersonDetailsControl.cs">
-      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\PersonDetailsControl.Designer.cs">
       <DependentUpon>PersonDetailsControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\PersonListControl.cs">
-      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\PersonListControl.Designer.cs">
       <DependentUpon>PersonListControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\PersonSelectorControl.cs">
-      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\PersonSelectorControl.Designer.cs">
       <DependentUpon>PersonSelectorControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\BalanceControl.cs">
-      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\BalanceControl.Designer.cs">
       <DependentUpon>BalanceControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\ServiceControl.cs">
-      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\ServiceControl.Designer.cs">
       <DependentUpon>ServiceControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\SchedulerControl.cs">
-      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\SchedulerControl.Designer.cs">
       <DependentUpon>SchedulerControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\SQLConnectionControl.cs">
-      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\SQLConnectionControl.Designer.cs">
       <DependentUpon>SQLConnectionControl.cs</DependentUpon>
@@ -218,103 +208,86 @@
     <Compile Include="EventArgsReferences\OrganizationExistanceCheckNeeded.cs" />
     <Compile Include="EventArgsReferences\PersonExistanceCheckNededEventArgs.cs" />
     <Compile Include="Frames\CustomAppointmentForm.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frames\CustomAppointmentForm.Designer.cs">
       <DependentUpon>CustomAppointmentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Frames\BaseFrame.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frames\BaseFrame.Designer.cs">
       <DependentUpon>BaseFrame.cs</DependentUpon>
     </Compile>
     <Compile Include="Frames\ConnectionForm.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frames\ConnectionForm.Designer.cs">
       <DependentUpon>ConnectionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Frames\EventClosedDetailsFrame.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frames\EventClosedDetailsFrame.Designer.cs">
       <DependentUpon>EventClosedDetailsFrame.cs</DependentUpon>
     </Compile>
     <Compile Include="Frames\EventCloseFrame.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frames\EventCloseFrame.Designer.cs">
       <DependentUpon>EventCloseFrame.cs</DependentUpon>
     </Compile>
     <Compile Include="Frames\EventDetailsForm.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frames\EventDetailsForm.Designer.cs">
       <DependentUpon>EventDetailsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Frames\MainFrame.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frames\MainFrame.Designer.cs">
       <DependentUpon>MainFrame.cs</DependentUpon>
     </Compile>
     <Compile Include="Frames\ChildFrame.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frames\ChildFrame.Designer.cs">
       <DependentUpon>ChildFrame.cs</DependentUpon>
     </Compile>
     <Compile Include="Frames\MainPanel.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frames\MainPanel.Designer.cs">
       <DependentUpon>MainPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Frames\MoveToTheBlackListForm.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frames\MoveToTheBlackListForm.Designer.cs">
       <DependentUpon>MoveToTheBlackListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Frames\OrganizationDetailsFrame.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frames\OrganizationDetailsFrame.Designer.cs">
       <DependentUpon>OrganizationDetailsFrame.cs</DependentUpon>
     </Compile>
     <Compile Include="Frames\OrganizationPanel.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frames\OrganizationPanel.Designer.cs">
       <DependentUpon>OrganizationPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Frames\PersonDetailsFrame.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frames\PersonDetailsFrame.Designer.cs">
       <DependentUpon>PersonDetailsFrame.cs</DependentUpon>
     </Compile>
     <Compile Include="Frames\PersonPanel.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frames\PersonPanel.Designer.cs">
       <DependentUpon>PersonPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Frames\ReportPanel.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frames\ReportPanel.Designer.cs">
       <DependentUpon>ReportPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Frames\SchedulerPanel.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frames\SchedulerPanel.Designer.cs">
       <DependentUpon>SchedulerPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Frames\ServiceDetailsForm.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frames\ServiceDetailsForm.Designer.cs">
       <DependentUpon>ServiceDetailsForm.cs</DependentUpon>
